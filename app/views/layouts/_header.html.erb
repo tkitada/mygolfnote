@@ -1,0 +1,13 @@
+<header>
+  <div>
+    <%= link_to root_path do %>
+      <%= image_tag "mygolfnote_logo.png", style: "width: 10%;" %>
+    <% end %>
+  </div>
+  <nav class="navbar navbar-exxpand-lg navbar-light">
+    <%= link_to "新規登録", new_user_registration_path %>
+    <%= link_to "サインイン", new_user_session_path %>
+    <%= link_to "about", about_path %>
+  </nav>
+
+</header>
