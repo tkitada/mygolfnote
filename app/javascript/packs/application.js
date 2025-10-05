@@ -13,6 +13,10 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"; 
 
+// 作成したプロフィール画像ハンドラーをインポート
+import '../packs/profile_image_handler' 
+
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
