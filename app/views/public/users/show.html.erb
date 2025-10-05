@@ -1,1 +1,50 @@
+<% profile_image_url = @user.profile_image.attached? ? url_for(@user.profile_image) : 'default-image.jpg' %>
 
+<%= form_with(model: @user, url: public_users_show_path(@user), method: :patch, local: true, html: { id: "image-upload-form" }) do |f| %>
+
+  <div id="profile-image-click-area" style="cursor: pointer;" class="text-center">
+    
+    <%= image_tag(profile_image_url, 
+                  class: "img-fluid rounded-circle", 
+                  alt: "プロフィール画像", 
+                  style: "width: 150px; height: 150px; object-fit: cover;") %>
+    
+    <p class="mt-2 text-muted small">クリックして画像を更新</p>
+  </div>
+
+  <div class="d-none"> 
+    <%= f.file_field :profile_image, 
+                     id: "profile-image-input", 
+                     onchange: "document.getElementById('image-upload-form').submit();" %>
+  </div>
+
+<% end %>
+
+<table class="table table-bordered">
+  <tbody>
+    <tr>
+      <th>アカウント名</th>
+      <td><%= @user.name %></td>
+    </th>
+    <tr>
+      <th>ベストスコア</th>
+      <td><%= @user.best_score %></td>
+    </tr>
+    <tr>
+      <th>平均スコア</th>
+      <td><%= @user.average_score %></td>
+    </tr>
+    <tr>
+      <th>ゴルフ歴(年数)</th>
+      <td><%= @user.golf_experience %></td>
+    </tr>
+    <tr>
+      <th>ゴルフの目標</th>
+      <td><%= @user.golf_goals %></td>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td><%= @user.email %></td>
+    </tr>
+  </tbody>
+</table>
