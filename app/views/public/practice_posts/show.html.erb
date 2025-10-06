@@ -1,2 +1,63 @@
-<h1>Public::PracticePosts#show</h1>
-<p>Find me in app/views/public/practice_posts/show.html.erb</p>
+<div class='container W-100 my-3'>
+  <div class='row my-4 w-75'>
+    <div class="col-12">
+      <h4 class="table-light thead-color px-3 mb-3 text-start d-inline-block">
+        <%= "#{@practice_post.user.name}" %>さんのGolf note
+      </h4>
+      <div class="form-row mb-2">
+        <div class="col-form-label col-md-2">
+          練習日
+        </div>
+        <div class="col-md-5">
+          <p class="form-control-plaintext">
+            <%= @practice_post.practice_date %>
+          </p>
+        </div>
+      </div>
+
+      <div class="form-row mb-2">
+        <div class="col-form-label col-md-2">
+          練習テーマ
+        </div>
+        <div class="col-md-5">
+          <p class="form-control-plaintext">
+            <%= @practice_post.practice_focus %>
+          </p>
+        </div>
+      </div>
+
+      <div class="form-row mb-2">
+        <div class="col-form-label col-md-2">
+          球数
+        </div>
+        <div class="col-md-5">
+          <p class="form-control-plaintext">
+            <%= @practice_post.shot_hits %>
+          </p>
+        </div>
+      </div>
+
+      <div class="form-row mb-2">
+        <div class="col-form-label col-md-2">
+          練習メモ
+        </div>
+        <div class="col-md-5">
+          <p class="form-control-plaintext">
+            <%= @practice_post.content %>
+          </p>
+        </div>
+      </div>
+
+
+      <div class="form-row mb-3">
+        <div class="col-md-3">
+          <%= link_to "編集する", edit_practice_post_path(@practice_post), class: "btn btn-success" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

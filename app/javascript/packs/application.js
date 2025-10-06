@@ -20,3 +20,6 @@ import '../packs/profile_image_handler'
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+require("trix")
+require("@rails/actiontext")
