@@ -7,13 +7,16 @@ class Public::PracticePostsController < ApplicationController
   end
 
   def create
-    @practice_post = PracticePost.new(practice_post_params)
-    @practice_post.user_id = current_user.id
-    @practice_post.save
-    redirect_to public_practice_posts_show_path
+    @practice_post = current_user.practice_posts.build(practice_post_params)
+    if @practice_post.save
+      redirect_to practice_post_path(@practice_post)
+    else
+      render :new
+    end
   end
 
   def show
+    @practice_post = PracticePost.find(params[:id])
   end
 
   def edit

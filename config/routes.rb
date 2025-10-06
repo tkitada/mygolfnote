@@ -1,16 +1,5 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'practice_posts/index'
-    get 'practice_posts/new'
-    get 'practice_posts/show'
-    get 'practice_posts/edit'
-  end
-  namespace :public do
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
-    get 'users/confirm'
-  end
+
   #顧客用
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -24,5 +13,16 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
   get "about", to: "homes#about", as: "about"
+
+  scope module: :public do
+    
+    get '/users/golfnotes' => 'users#index'
+    get '/users/mypage' => 'users#show'
+    get '/users/info/edit' => 'users#edit'
+    get '/users/confirm' => 'users#confirm'
+
+    resources :practice_posts, only: [:new, :create, :show, :edit, :index]
+    resources :users, only: [:update]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
