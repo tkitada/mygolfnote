@@ -3,7 +3,7 @@ class Public::PracticePostsController < ApplicationController
   end
 
   def new
-    
+    @practice_post = PracticePost.new
   end
 
   def show
@@ -11,4 +11,5 @@ class Public::PracticePostsController < ApplicationController
 
   def edit
   end
+  
 end
