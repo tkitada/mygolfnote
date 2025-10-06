@@ -8,7 +8,7 @@
     <% if admin_signed_in? %>
       <%= link_to "サインアウト", destroy_admin_session_path, method: :delete %>
     <% elsif user_signed_in? %>
-      <%= link_to "Golf note", public_practice_posts_new_path %>
+      <%= link_to "Golf note", new_practice_post_path %>
       <%= link_to "サインアウト", destroy_user_session_path, method: :delete %>
     <% else %>
       <%= link_to "新規登録", new_user_registration_path %>

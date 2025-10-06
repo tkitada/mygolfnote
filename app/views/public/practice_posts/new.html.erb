@@ -4,7 +4,7 @@
       <h4 class="table-light thead-color px-3 mb-2 fs-6 text-start d-inline-block">
         Golf note
       </h4>   
-      <%= form_with model: @practice_post, url: public_practice_posts_show_path(@practice_post), local: true do |f| %>
+      <%= form_with model: @practice_post, url: practice_posts_path, local: true do |f| %>
 
         <div class="mb-3">
           <%= f.label :pratice_date, "練習日", class: "form-label" %>
