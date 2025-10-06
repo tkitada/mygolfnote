@@ -1,0 +1,2 @@
+class PracticePost < ApplicationRecord
+end

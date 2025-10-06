@@ -1,2 +1,78 @@
-<h1>Public::Users#edit</h1>
-<p>Find me in app/views/public/users/edit.html.erb</p>
+<div class='container W-100 my-3'>
+  <div class='row my-4 w-75'>
+    <div class="col-12">
+      <h4 class="table-light thead-color px-3 mb-4 fs-6 text-start d-inline-block">
+        <%= render "profile_image" %>
+      </h4>
+
+      <%= form_with model:@user, url: public_users_show_path(@user), local: true do |f| %>
+
+        <div class="form-row mb-3">
+          <div class="col-form-label col-md-2">
+            アカウント名
+          </div>
+          <div class="col-md-4">
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-row mb-3">
+          <div class="col-form-label col-md-2">
+            ベストスコア
+          </div>
+          <div class="col-md-2">
+            <%= f.number_field :best_score, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-row mb-3">
+          <div class="col-form-label col-md-2">
+            平均スコア
+          </div>
+          <div class="col-md-2">
+            <%= f.number_field :average_score, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-row mb-3">
+          <div class="col-form-label col-md-2">
+            ゴルフ歴(年数)
+          </div>
+          <div class="col-md-2">
+            <%= f.number_field :golf_experience, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-row mb-3">
+          <div class="col-form-label col-md-2">
+            ゴルフの目標
+          </div>
+          <div class="col-md-8">
+            <%= f.text_field :golf_goals, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-row mb-4">
+          <div class="col-form-label col-md-2">
+            メールアドレス
+          </div>
+          <div class="col-md-4">
+            <%= f.text_field :email, class: "form-control" %>
+          </div>
+        </div>
+
+
+        <div class="form-row mb-3">
+          <div class="col-md-5">
+            <%= f.submit "編集内容を保存", class: "btn btn-success" %>
+          </div>
+          <div class="col-md-5">
+            <%= link_to "退会する", public_users_confirm_path(@user), class: "btn btn-danger" %>
+          </div>
+        </div>
+    
+      <% end %>
+    </div>
+  </div>
+</div>
+
