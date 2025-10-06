@@ -3,6 +3,7 @@ class Public::PracticePostsController < ApplicationController
   end
 
   def new
+    
   end
 
   def show
