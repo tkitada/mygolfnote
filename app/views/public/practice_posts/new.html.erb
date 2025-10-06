@@ -1,2 +1,37 @@
-<h1>Public::PracticePosts#new</h1>
-<p>Find me in app/views/public/practice_posts/new.html.erb</p>
+<div class='container W-100 my-3'>
+  <div class='row justify-content-center'>
+    <div class="col-md-8">
+      <h4 class="table-light thead-color px-3 mb-2 fs-6 text-start d-inline-block">
+        Golf note
+      </h4>   
+      <%= form_with model: @practice_post, url: practice_posts_path, local: true do |f| %>
+
+        <div class="mb-3">
+          <%= f.label :pratice_date, "練習日", class: "form-label" %>
+          <%= f.date_field :practice_date, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :pratice_focus, "練習テーマ", class: "form-label" %>
+          <%= f.text_field :practice_focus, class: "form-control", placeholder: "飛距離アップ・スライス矯正など" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :shot_hits, "球数", class: "form-label" %>
+          <%= f.number_field :shot_hits, class: "form-control", placeholder: "50" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :content, "練習メモ(自由記述)", class: "form-label" %>
+          <%= f.rich_text_area :content %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.submit "投稿", class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+  
