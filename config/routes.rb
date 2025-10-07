@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     get '/users/info/edit' => 'users#edit'
     get '/users/confirm' => 'users#confirm'
 
-    resources :practice_posts, only: [:new, :create, :show, :edit, :index, ,:update, :destroy]
+    resources :practice_posts, only: [:new, :create, :show, :edit, :index, :update, :destroy]
     resources :users, only: [:update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -12,7 +12,7 @@ class Public::UsersController < ApplicationController
 
   def update
     @user.update(user_params)
-    redirect_to public_users_show_path(@user)
+    redirect_to users_mypage_path(@user)
   end
 
   def confirm

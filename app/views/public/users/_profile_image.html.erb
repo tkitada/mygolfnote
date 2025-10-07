@@ -1,6 +1,6 @@
 <% profile_image_url = @user.profile_image.attached? ? url_for(@user.profile_image) : 'default-image.jpg' %>
 
-<%= form_with(model: @user, url: public_users_show_path(@user), method: :patch, local: true, html: { id: "image-upload-form" }) do |f| %>
+<%= form_with(model: @user, url: users_mypage_path(@user), method: :patch, local: true, html: { id: "image-upload-form" }) do |f| %>
 
   <div id="profile-image-click-area" style="cursor: pointer;" class="text-center">
     
