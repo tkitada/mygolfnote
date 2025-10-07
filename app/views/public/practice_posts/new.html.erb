@@ -1,9 +1,18 @@
 <div class='container W-100 my-3'>
   <div class='row justify-content-center'>
     <div class="col-md-8">
+      <% if @practice_post.errors.any? %>
+        <%= @practice_post.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @practice_post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
       <h4 class="table-light thead-color px-3 mb-2 fs-6 text-start d-inline-block">
         Golf note
-      </h4>   
+      </h4>
+   
       <%= form_with model: @practice_post, url: practice_posts_path, local: true do |f| %>
 
         <div class="mb-3">
