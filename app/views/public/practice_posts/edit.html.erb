@@ -2,9 +2,9 @@
   <div class='row my-4 w-75'>
     <div class="col-12">
       <h4 class="table-light thead-color px-3 mb-3 text-start d-inline-block">
-        <%= "#{@practice_post.user.name}" %>さんのGolf note編集 %>
+        <%= "#{@practice_post.user.name}" %>さんのGolf note編集
       </h4>
-      <%= form_with model:@practice_post, url: edit_practice_post_path(@practice_post), local: true do |f| %>
+      <%= form_with model:@practice_post, local: true do |f| %>
         <div class="form-row mb-2">
           <div class="col-form-label col-md-2">
             練習日
@@ -42,7 +42,7 @@
           <div class="col-form-label col-md-2">
             練習メモ
           </div>
-          <div class="col-md-5">
+          <div class="col-md-12">
             <p class="form-control-plaintext">
               <%= f.rich_text_area :content %>
             </p>
@@ -55,7 +55,7 @@
             <%= f.submit "編集内容を保存", class: "btn btn-success" %>
           </div>
           <div class="col-md-3">
-            <%= link_to "投稿削除", users_golfnotes_path(@user), method: :delete, class: "btn btn-danger", data: { confirm: "本当に削除しますか？" } %>
+            <%= link_to "投稿削除", practice_post_path(@practice_post), method: :delete, class: "btn btn-danger", data: { confirm: "本当に削除しますか？" } %>
           </div>
         </div>
       <% end %>
