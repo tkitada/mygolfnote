@@ -20,7 +20,10 @@ class Public::PracticePostsController < ApplicationController
   end
 
   def edit
+    @practice_post = PracticePost.find(params[:id])
   end
+
+
 
   private
 
