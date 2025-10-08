@@ -11,13 +11,13 @@ Rails.application.routes.draw do
   }
   
 
-  root to: 'homes#top'
+  root to: 'public/practice_posts#index'
   get "about", to: "homes#about", as: "about"
 
   scope module: :public do
     
     get '/users/golfnotes' => 'users#index'
-    get '/users/mypage' => 'users#show'
+    get '/users/:id' => 'users#show', as: 'user'
     get '/users/info/edit' => 'users#edit'
     get '/users/confirm' => 'users#confirm'
 

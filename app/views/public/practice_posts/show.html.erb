@@ -51,7 +51,9 @@
 
       <div class="form-row mb-3">
         <div class="col-md-3">
-          <%= link_to "編集する", edit_practice_post_path(@practice_post), class: "btn btn-success" %>
+          <% if @practice_post.user == current_user %>
+            <%= link_to "編集する", edit_practice_post_path(@practice_post), class: "btn btn-success" %>
+          <% end %>
         </div>
       </div>
     </div>
