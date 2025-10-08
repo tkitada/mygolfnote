@@ -1,5 +1,7 @@
 class Public::PracticePostsController < ApplicationController
+  before_action :authenticate_user!
   def index
+    @practice_posts = PracticePost.all
   end
 
   def new
@@ -43,5 +45,6 @@ class Public::PracticePostsController < ApplicationController
   def practice_post_params
     params.require(:practice_post).permit(:practice_date, :practice_focus, :shot_hits, :content)
   end
+
 
 end

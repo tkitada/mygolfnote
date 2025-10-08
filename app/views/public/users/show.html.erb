@@ -4,7 +4,9 @@
   </h3>
   <div class="form-row mb-4">
     <div class="col-md-5 ml-3">
-      <%= link_to "編集する", users_info_edit_path(@user), class: " btn btn-success" %>
+      <% if @user == current_user %>
+        <%= link_to "編集する", users_info_edit_path(@user), class: " btn btn-success" %>
+      <% end %>
     </div>
   </div>
 
