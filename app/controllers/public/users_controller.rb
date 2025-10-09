@@ -12,7 +12,7 @@ class Public::UsersController < ApplicationController
 
   def update
     @user.update(user_params)
-    redirect_to public_users_show_path(@user)
+    redirect_to users_mypage_path(@user)
   end
 
   def confirm
@@ -21,10 +21,10 @@ class Public::UsersController < ApplicationController
   private
 
   def set_user
-    @user = User.find(current_user.id)
+    @user = User.find(params[:id])
   end
 
   def user_params
-    params.require(:user).permit(:name, :best_score, :average_score, :golf_experience, :golf_goals, :email)
+    params.require(:user).permit(:name, :best_score, :average_score, :golf_experience, :golf_goals, :email, :profile_image)
   end
 end

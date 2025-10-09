@@ -1,21 +1,19 @@
 <% profile_image_url = @user.profile_image.attached? ? url_for(@user.profile_image) : 'default-image.jpg' %>
+<% if @user == current_user %>
+  <%= form_with(model: @user, url: user_path(@user), method: :patch, local: true, html: { id: "image-upload-form" }) do |f| %>
 
-<%= form_with(model: @user, url: public_users_show_path(@user), method: :patch, local: true, html: { id: "image-upload-form" }) do |f| %>
-
-  <div id="profile-image-click-area" style="cursor: pointer;" class="text-center">
+    <div id="profile-image-click-area" style="cursor: pointer;" class="text-center">
     
-    <%= image_tag(profile_image_url, 
-                  class: "img-fluid rounded-circle", 
-                  alt: "プロフィール画像", 
-                  style: "width: 150px; height: 150px; object-fit: cover;") %>
+      <%= image_tag(profile_image_url, class: "img-fluid rounded-circle", alt: "プロフィール画像", style: "width: 150px; height: 150px; object-fit: cover;") %>
     
-    <p class="mt-2 text-muted small">クリックして画像を更新</p>
-  </div>
+      <p class="mt-2 text-muted small">クリックして画像を更新</p>
+    </div>
 
-  <div class="d-none"> 
-    <%= f.file_field :profile_image, 
-                     id: "profile-image-input", 
-                     onchange: "document.getElementById('image-upload-form').submit();" %>
-  </div>
+    <div class="d-none"> 
+      <%= f.file_field :profile_image, id: "profile-image-input", onchange: "document.getElementById('image-upload-form').submit();" %>
+    </div>
 
-<% end %>
+  <% end %>
+<% else %>
+  <%= profile_image_for(@user, size: 150) %>
+<% end %> 
