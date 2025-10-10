@@ -16,13 +16,10 @@ Rails.application.routes.draw do
 
   scope module: :public do
     
-    get '/users/golfnotes' => 'users#index'
-    get '/users/:id' => 'users#show', as: 'user'
-    get '/users/info/edit' => 'users#edit'
     get '/users/confirm' => 'users#confirm'
 
     resources :practice_posts, only: [:new, :create, :show, :edit, :index, :update, :destroy]
-    resources :users, only: [:update]
+    resources :users, only: [:index, :show, :edit, :update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
