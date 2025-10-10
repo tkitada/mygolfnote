@@ -2,24 +2,30 @@
   <div class="row">
     <div class="col-md-12">
       <%= render 'user_profile' %>
-      <div class="d-flex flex-wrap">
-        <% @practice_posts.each do |practice_post| %>
-          <div class="card m-2 flex-fill" style="min-width: 300px; max-width: 48%;">
-            <div class="card-body">
-              <div class="d-flex">
-                <div class="col-12">
-                  <h5 class="card-title">
-                    <%= link_to practice_post_path(practice_post), class: "text-dark" do %>
-                      <i class="far fa-flag"></i> <%= practice_post.practice_focus %>
-                    <% end %>
-                  </h5>
-                  <p class="card-text">メモ：<%= practice_post.content %></p>
+      <% if @practice_posts.any? %>
+        <div class="d-flex flex-wrap">
+          <% @practice_posts.each do |practice_post| %>
+            <div class="card m-2 flex-fill" style="min-width: 300px; max-width: 48%;">
+              <div class="card-body">
+                <div class="d-flex">
+                  <div class="col-12">
+                    <h5 class="card-title">
+                      <%= link_to practice_post_path(practice_post), class: "text-dark" do %>
+                        <i class="far fa-flag"></i> <%= practice_post.practice_focus %>
+                      <% end %>
+                    </h5>
+                    <p class="card-text">メモ：<%= practice_post.content %></p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        <% end %>
-      </div>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="text-center mt-4">
+          <i class="far fa-frown"></i> 投稿がまだありません。
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

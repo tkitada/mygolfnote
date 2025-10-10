@@ -1,2 +1,19 @@
-<h1>Public::Users#confirm</h1>
-<p>Find me in app/views/public/users/confirm.html.erb</p>
+<div class='container my-5'>
+  <div class='row justify-content-center'>
+    <div class="col-12 text-center">
+      <h5 class="bg-light px-3 mb-4 fs-6 d-inline-block">本当に退会しますか？</h5>
+      
+      <p class="mb-4">
+        退会すると、ユーザー登録情報や<br>
+        これまでの投稿が閲覧できなくなります。<br>
+        退会する場合は、「退会する」をクリックしてください。
+      </p>
+
+      <div class="d-flex justify-content-center gap-4">
+        <%= link_to "退会しない", user_path(@user), class: "btn btn-primary mr-3" %>
+        <%= link_to "退会する", users_unsubscribe_path(@user), method: :patch, data: { confirm: "本当に退会しますか？" }, class: "btn btn-danger" %>
+      </div>
+    </div>
+  </div>
+</div>
+

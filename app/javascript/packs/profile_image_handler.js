@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('turbolinks:load', function() {
   const clickArea = document.getElementById('profile-image-click-area');
   const fileInput = document.getElementById('profile-image-input');
   
