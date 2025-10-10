@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
   end
 
   def show
-    @practice_posts = PracticePost.all
+    @practice_posts = @user.practice_posts.order(created_at: :desc)
   end
 
   def edit
@@ -17,6 +17,13 @@ class Public::UsersController < ApplicationController
   end
 
   def confirm
+  end
+
+  def unsubscribe
+    @user = current_user
+    @user.update(is_active: false)
+    sign_out @user
+    redirect_to root_path
   end
 
   private

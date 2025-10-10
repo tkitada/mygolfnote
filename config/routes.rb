@@ -15,8 +15,9 @@ Rails.application.routes.draw do
   get "about", to: "homes#about", as: "about"
 
   scope module: :public do
-    
-    get '/users/confirm' => 'users#confirm'
+
+    get '/users/:id/confirm' => 'users#confirm', as: :user_confirm
+    patch 'users/unsubscribe' => 'users#unsubscribe'
 
     resources :practice_posts, only: [:new, :create, :show, :edit, :index, :update, :destroy]
     resources :users, only: [:index, :show, :edit, :update]
