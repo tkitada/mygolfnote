@@ -1,0 +1,24 @@
+<div class="card mb-4 shadow-sm mx-auto" style="max-width: 600px;">
+  <div class="card-body align-items-center">
+    <div class="mr-3">
+      <%= render "profile_image" %>
+    </div>
+    <div class="mb-2">
+      <h5 class="mb-1"><%= @user.name %></h5>
+      <small class="text-muted">ベストスコア：<%= @user.best_score %> / 平均スコア：<%= @user.average_score %></small><br>
+      <small class="text-muted">ゴルフ歴：<%= @user.golf_experience %> / 目標：<%= @user.golf_goals %></small><br>
+      <small class="text-muted">メールアドレス：<%= @user.email %></small>
+    </div>
+    <% if @user == current_user %>
+        <%= link_to "編集", edit_user_path(@user), class: " btn btn-success" %>
+    <% end %>
+  </div>
+</div>
+
+    
+
+
+
+
+
+

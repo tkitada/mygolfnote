@@ -37,7 +37,7 @@ class Public::PracticePostsController < ApplicationController
   def destroy
     @practice_post = current_user.practice_posts.find(params[:id])
     @practice_post.destroy
-    redirect_to users_golfnotes_path
+    redirect_to user_path(current_user)
   end
 
   private

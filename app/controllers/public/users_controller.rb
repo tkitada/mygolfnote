@@ -5,6 +5,7 @@ class Public::UsersController < ApplicationController
   end
 
   def show
+    @practice_posts = PracticePost.all
   end
 
   def edit
@@ -12,7 +13,7 @@ class Public::UsersController < ApplicationController
 
   def update
     @user.update(user_params)
-    redirect_to users_mypage_path(@user)
+    redirect_to user_path(@user)
   end
 
   def confirm
