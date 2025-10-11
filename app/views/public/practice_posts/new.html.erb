@@ -17,6 +17,7 @@
 
         <div class="mb-3">
           <%= f.label :pratice_date, "練習日", class: "form-label" %>
+          <span class="badge badge-danger">必須</span>
           <%= f.date_field :practice_date, class: "form-control" %>
         </div>
 
@@ -32,6 +33,7 @@
 
         <div class="mb-3">
           <%= f.label :content, "練習メモ(自由記述)", class: "form-label" %>
+          <span class="badge badge-danger">必須</span>
           <%= f.rich_text_area :content %>
         </div>
 
