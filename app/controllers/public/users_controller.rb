@@ -1,4 +1,6 @@
 class Public::UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:edit]
+  before_action :is_matching_login_user, only: [:edit, :update]
   before_action :set_user, only: [:show, :edit, :update, :confirm]
 
   def index
@@ -12,8 +14,11 @@ class Public::UsersController < ApplicationController
   end
 
   def update
-    @user.update(user_params)
-    redirect_to user_path(@user)
+    if @user.update(user_params)
+      redirect_to user_path(@user)
+    else
+      render :edit
+    end
   end
 
   def confirm
@@ -28,6 +33,13 @@ class Public::UsersController < ApplicationController
 
   private
 
+  def is_matching_login_user
+    user = User.find(params[:id])
+    unless user.id == current_user.id
+      redirect_to root_path
+    end
+  end
+    
   def set_user
     @user = User.find(params[:id])
   end
