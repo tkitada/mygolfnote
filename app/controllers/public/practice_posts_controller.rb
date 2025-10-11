@@ -1,5 +1,7 @@
 class Public::PracticePostsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :is_matching_login_user, only: [:edit, :update]
+
   def index
     @practice_posts = PracticePost.all
   end
@@ -41,6 +43,12 @@ class Public::PracticePostsController < ApplicationController
   end
 
   private
+
+  def is_matching_login_user
+    unless @practice_post.user == current_user
+      redirect_to root_path
+    end
+  end
 
   def practice_post_params
     params.require(:practice_post).permit(:practice_date, :practice_focus, :shot_hits, :content)
