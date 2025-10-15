@@ -1,0 +1,54 @@
+<h2 class="mb-4">
+<% if @model == "User" %>
+  ユーザー search for "<%= @word %>"
+<% elsif @model == "PracticePost" %>
+  練習 search for "<%= @word %>"
+<% end %>
+</h2>
+
+<table class='table'>
+<thead>
+  <tr>
+    <th></th>
+    <th>練習テーマ</th>
+    <th>練習内容</th>
+  </tr>
+</thead>
+<tbody>
+  <% if @model == "User" %>
+    <% @users.each do |user| %>
+      <% user.practice_posts.each do |practice_post| %>
+        <tr>
+          <td>
+            <%= link_to user_path(practice_post.user) do %>
+              <%= profile_image_for(practice_post.user, size: 50) %>
+            <% end %>
+          </td>
+          <td><%= link_to practice_post.practice_focus, practice_post_path(practice_post) %></td>
+          <td><%= practice_post.content %></td>
+        </tr>
+      <% end %>
+    <% end %>
+
+  <% elsif @model == "PracticePost" %>
+    <% @practice_posts.each do |practice_post| %>
+      <tr>
+        <td>
+          <%= link_to user_path(practice_post.user) do %>
+            <%= profile_image_for(practice_post.user, size: 50) %>
+          <% end %>       
+        </td>
+        <td><%= link_to practice_post.practice_focus, practice_post_path(practice_post) %></td>
+        <td><%= practice_post.content %></td>
+      </tr>
+    <% end %>
+
+  <% else %>
+    <tr>
+      <td colspan="3">Records not found</td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+
+
