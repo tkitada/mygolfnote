@@ -13,6 +13,12 @@
 
   <body class="d-flex flex-column min-vh-100">
     <%= render "layouts/header" %>
-    <%= yield %>
+      <main>
+        <%= flash[:notice] %>
+        <div class="d-flex justify-content-center mb-2">
+          <%= render "public/searches/searchform" %>
+        </div>
+        <%= yield %>
+      </main>
   </body>
 </html>

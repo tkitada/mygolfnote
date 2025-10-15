@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
-  #顧客用
+  #devise関連（顧客用）
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  #管理者用
+  #devise関連（管理者用）
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
     get '/users/:id/confirm' => 'users#confirm', as: :user_confirm
     patch 'users/unsubscribe' => 'users#unsubscribe'
+    get "search", to: "searches#search", as: "search"
 
     resources :practice_posts, only: [:new, :create, :show, :edit, :index, :update, :destroy]
     resources :users, only: [:index, :show, :edit, :update]
