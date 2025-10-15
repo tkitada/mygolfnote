@@ -20,7 +20,9 @@ Rails.application.routes.draw do
     patch 'users/unsubscribe' => 'users#unsubscribe'
     get "search", to: "searches#search", as: "search"
 
-    resources :practice_posts, only: [:new, :create, :show, :edit, :index, :update, :destroy]
+    resources :practice_posts, only: [:new, :create, :show, :edit, :index, :update, :destroy] do
+      resources :post_comments, only: [:create, :destroy]
+    end
     resources :users, only: [:index, :show, :edit, :update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
