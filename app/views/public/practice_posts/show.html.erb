@@ -56,8 +56,9 @@
           <% end %>
         </div>
       </div>
-
-      <%= render "public/post_comments/index", practice_post: @practice_post %>
+      <div id="comment_index">
+        <%= render "public/post_comments/index", practice_post: @practice_post %>
+      </div>
       <%= render "public/post_comments/comment_form", practice_post: @practice_post, post_comment: @post_comment %>
 
     </div>
