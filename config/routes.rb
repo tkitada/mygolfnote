@@ -11,14 +11,14 @@ Rails.application.routes.draw do
   }
   
 
-  root to: 'public/practice_posts#index'
-  get "about", to: "homes#about", as: "about"
-
+  #顧客側routing
   scope module: :public do
+    root to: 'practice_posts#index'
 
+    get "about", to: "homes#about", as: "about"
+    get "search", to: "searches#search", as: "search"
     get '/users/:id/confirm' => 'users#confirm', as: :user_confirm
     patch 'users/unsubscribe' => 'users#unsubscribe'
-    get "search", to: "searches#search", as: "search"
 
     resources :practice_posts, only: [:new, :create, :show, :edit, :index, :update, :destroy] do
       resources :post_comments, only: [:create, :destroy]
@@ -26,8 +26,9 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update]
   end
 
+  #管理者側routing
   namespace :admin do
-    root to: 'admin/users#index'
+    root to: 'users#index'
     resources :users, only: [:index, :show, :edit, :update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
