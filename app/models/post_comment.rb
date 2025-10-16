@@ -1,4 +1,4 @@
-class Postcomment < ApplicationRecord
+class PostComment < ApplicationRecord
   belongs_to :user
   belongs_to :practice_post
 
