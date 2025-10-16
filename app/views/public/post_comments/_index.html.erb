@@ -1,0 +1,20 @@
+<table>
+  <tbody>
+    <% practice_post.post_comments.each do |post_comment| %>
+      <tr>
+        <td>
+          <%= link_to user_path(practice_post.user) do %>
+            <%= profile_image_for(practice_post.user, size: 50) %><br>
+            <%= post_comment.user.name %>
+          <% end %>
+        </td>
+        <td><%= post_comment.comment %></td>
+        <td>
+          <% if post_comment.user == current_user %>
+            <%= link_to "Destroy", practice_post_post_comment_path(practice_post, post_comment), method: :delete, class: "btn btn-sm btn-danger float-end", remote: true %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -21,6 +21,7 @@ class Public::PracticePostsController < ApplicationController
 
   def show
     @practice_post = PracticePost.find(params[:id])
+    @post_comment = PostComment.new
   end
 
   def edit
