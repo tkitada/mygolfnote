@@ -1,0 +1,11 @@
+<% if practice_post.favorited_by?(current_user) %>
+  <%= link_to practice_post_favorites_path(practice_post), method: :delete, remote: true do %>
+    <i class="fa-solid fa-thumbs-up"></i>
+    <%= practice_post.favorites.count %> いいね
+  <% end %>
+<% else %>
+  <%= link_to practice_post_favorites_path(practice_post), method: :post, remote: true do %>
+    <i class="fa-regular fa-thumbs-up"></i>
+    <%= practice_post.favorites.count %> いいね
+  <% end %>
+<% end %>

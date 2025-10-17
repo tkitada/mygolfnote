@@ -16,7 +16,11 @@
           </p>
           <p class="card-text">説明：<%= practice_post.content %></p>
           <span>
-            <i class="fas fa-user"></i> By <%= practice_post.user.name %> ｜ <i class="fa-regular fa-comment"></i> コメント数： <%= practice_post.post_comments.count %>
+            <i class="fas fa-user"></i> By <%= practice_post.user.name %> ｜ 
+            <i class="fa-regular fa-comment"></i> コメント数： <%= practice_post.post_comments.count %> ｜
+            <span id="favorite_btn_<%= practice_post.id %>">
+              <%= render "public/favorites/btn", practice_post: practice_post %>
+            </span>
           </span>
         </div>
       </div>
