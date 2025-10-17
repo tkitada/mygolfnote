@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     patch 'users/unsubscribe' => 'users#unsubscribe'
 
     resources :practice_posts, only: [:new, :create, :show, :edit, :index, :update, :destroy] do
+      resource :favorites, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end
     resources :users, only: [:index, :show, :edit, :update]
