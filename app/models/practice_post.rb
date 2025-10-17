@@ -8,6 +8,7 @@ class PracticePost < ApplicationRecord
   validates :practice_date, :content, presence: :true
 
   def favorited_by?(user)
+    return false unless user
     favorites.exists?(user_id: user.id)
   end
 
