@@ -10,12 +10,12 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   
-
+  get "about", to: "homes#about", as: "about"
+  
   #顧客側routing
   scope module: :public do
     root to: 'practice_posts#index'
 
-    get "about", to: "homes#about", as: "about"
     get "search", to: "searches#search", as: "search"
     get '/users/:id/confirm' => 'users#confirm', as: :user_confirm
     patch 'users/unsubscribe' => 'users#unsubscribe'
