@@ -4,6 +4,7 @@ class Public::PracticePostsController < ApplicationController
 
   def index
     @practice_posts = PracticePost.all
+    @tag_list = PostTag.all
   end
 
   def new
@@ -12,7 +13,9 @@ class Public::PracticePostsController < ApplicationController
 
   def create
     @practice_post = current_user.practice_posts.build(practice_post_params)
+    tag_list = params[:practice_post][:name].split(',')
     if @practice_post.save
+      @practice_post.save_post_tags(tag_list)
       redirect_to practice_post_path(@practice_post)
     else
       render :new
@@ -38,6 +41,12 @@ class Public::PracticePostsController < ApplicationController
   def destroy
     @practice_post.destroy
     redirect_to user_path(current_user)
+  end
+
+  def search_tag
+    @tag_list = PostTag.all
+    @tag = PostTag.find(params[:post_tag_id])
+    @practice_posts = @tag.practice_posts
   end
 
   private
