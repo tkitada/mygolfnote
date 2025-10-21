@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'groups/new'
-    get 'groups/index'
-    get 'groups/show'
-    get 'groups/edit'
-  end
   #devise関連（顧客用）
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -31,7 +25,9 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end
-    resources :users, only: [:index, :show, :edit, :update]
+    resources :users, only: [:index, :show, :edit, :update] do
+      resources :groups, only: [:new, :index, :show, :create, :edit, :update]
+    end
   end
 
   #管理者側routing
