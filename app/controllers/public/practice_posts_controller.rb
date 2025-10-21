@@ -4,6 +4,7 @@ class Public::PracticePostsController < ApplicationController
 
   def index
     @practice_posts = PracticePost.all
+    @tag_list = Tag.all
   end
 
   def new
@@ -12,7 +13,9 @@ class Public::PracticePostsController < ApplicationController
 
   def create
     @practice_post = current_user.practice_posts.build(practice_post_params)
+    tag_list = params[:practice_post][:name].split(',')
     if @practice_post.save
+      @practice_post.save_tags(tag_list)
       redirect_to practice_post_path(@practice_post)
     else
       render :new
@@ -28,7 +31,13 @@ class Public::PracticePostsController < ApplicationController
   end
 
   def update
+    tag_list = params[:practice_post][:name].split(',')
     if @practice_post.update(practice_post_params)
+      @old_relations = PostTag.where(practice_post: @practice_post.id)
+      @old_relations.each do |relation|
+        relation.delete
+      end
+      @practice_post.save_tags(tag_list)
       redirect_to practice_post_path(@practice_post)
     else
       render :edit
@@ -38,6 +47,12 @@ class Public::PracticePostsController < ApplicationController
   def destroy
     @practice_post.destroy
     redirect_to user_path(current_user)
+  end
+
+  def search_tag
+    @tag_list = Tag.all
+    @tag = Tag.find(params[:tag_id])
+    @practice_posts = @tag.practice_posts
   end
 
   private

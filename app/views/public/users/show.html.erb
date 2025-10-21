@@ -15,6 +15,17 @@
                       <% end %>
                     </h5>
                     <p class="card-text">メモ：<%= practice_post.content %></p>
+                    <span id="favorite_btn_<%= practice_post.id %>">
+                      <%= render "public/favorites/btn", practice_post: practice_post %>
+                    </span>
+                    <p>
+                      <% practice_post.tags.each do |tag| %>
+                        <span class="badge badge-dark rounded-pill"><%= tag.name %></span>
+                      <% end %>
+                    </p>
+                    <p>
+                      <i class="fa-regular fa-comment"></i> コメント数： <%= practice_post.post_comments.count %>
+                    </p>
                   </div>
                 </div>
                 <% if @user == current_user %>

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'practice_posts#index'
 
+    get "search_tag" => "practice_posts#search_tag"
     get "search", to: "searches#search", as: "search"
     get '/users/:id/confirm' => 'users#confirm', as: :user_confirm
     patch 'users/unsubscribe' => 'users#unsubscribe'
