@@ -31,7 +31,13 @@ class Public::PracticePostsController < ApplicationController
   end
 
   def update
+    tag_list = params[:practice_post][:name].split(',')
     if @practice_post.update(practice_post_params)
+      @old_relations = PostTag.where(practice_post: @practice_post.id)
+      @old_relations.each do |relation|
+        relation.delete
+      end
+      @practice_post.save_tags(tag_list)
       redirect_to practice_post_path(@practice_post)
     else
       render :edit
