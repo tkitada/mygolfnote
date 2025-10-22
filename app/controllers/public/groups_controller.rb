@@ -17,7 +17,8 @@ class Public::GroupsController < ApplicationController
     @group = Group.new(group_params)
     @group.owner_id = current_user.id
     if @group.save 
-      redirect_to groups_path, method: :post
+      @group.users << current_user
+      redirect_to groups_path, method: :post, notice: "グループを作成しました"
     else
       render :new
     end
@@ -40,10 +41,9 @@ class Public::GroupsController < ApplicationController
 
   def send_mail
     @group = Group.find(params[:group_id])
-    group_users = @group.users
     @mail_title = params[:mail_title]
     @mail_content = params[:mail_content]
-    EventMailer.send_mail(@mail_title, @mail_content, group_users).deliver
+    EventMailer.send_mail(@group, @mail_title, @mail_content).deliver_now
   end
 
   private
