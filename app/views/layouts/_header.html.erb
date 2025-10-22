@@ -12,7 +12,7 @@
       <%= link_to "Golf note", new_practice_post_path %>
       <%= link_to "about", about_path %>
       <%= link_to "MyPage", user_path(current_user) %>
-      <%= link_to "Group", new_user_group_path(current_user) %>
+      <%= link_to "Group", new_group_path %>
       <%= link_to "サインアウト", destroy_user_session_path, method: :delete %>
     <% else %>
       <%= link_to "新規登録", new_user_registration_path %>

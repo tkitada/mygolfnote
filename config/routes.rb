@@ -25,9 +25,9 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end
-    resources :users, only: [:index, :show, :edit, :update] do
-      resources :groups, only: [:new, :index, :show, :create, :edit, :update]
-    end
+    resources :users, only: [:index, :show, :edit, :update]
+    resources :groups, only: [:new, :index, :show, :create, :edit, :update]
+
   end
 
   #管理者側routing
