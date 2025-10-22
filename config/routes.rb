@@ -26,8 +26,9 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:create, :destroy]
     end
     resources :users, only: [:index, :show, :edit, :update]
-    resources :groups, only: [:new, :index, :show, :create, :edit, :update]
-
+    resources :groups, only: [:new, :index, :show, :create, :edit, :update] do
+      resource :group_users, only: [:create, :destroy]
+    end
   end
 
   #管理者側routing

@@ -1,36 +1,39 @@
 <div class='container W-100 my-3'>
   <div class='row justify-content-center'>
     <div class="col-md-8">
-      <h4 class="px-3 mb-2 fs-6 text-start d-inline-block">Groups</h4>
-        <%= flash[:notice] %>
-        <table class="table">
-          <thead>
+      <h4 class="px-3 mb-2 fs-6 text-start d-inline-block">
+        グループ一覧 ｜
+        <%= link_to "グループ作成", new_group_path %>
+      </h4>
+      <%= flash[:notice] %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Group Name</th>
+            <th>Members</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @groups.each do |group| %>
             <tr>
-              <th></th>
-              <th>グループ名</th>
-              <th>紹介文</th>
-              <th colspan="3"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @groups.each do |group| %>
-              <tr>
-                <td>
-                  <% if group.group_image.attached? %>
-                    <%= image_tag group.group_image, size: "50x50" %>
-                  <% else %>
-                    <%= image_tag 'default-image.jpg', size: "50x50" %>
-                  <% end %>
-                </td>
-                <td><%= link_to group.name, group_path(group.id) %></td>
-                <td><%= group.introduction %></td>
-                <% if group.is_owned_by?(current_user) %>
-                  <td><%= link_to 'Edit', edit_group_path(group), class: "group_#{group.id} btn btn-sm btn-info" %></td>
+              <td>
+                <% if group.group_image.attached? %>
+                  <%= image_tag group.group_image, size: "50x50" %>
+                <% else %>
+                  <%= image_tag 'default-image.jpg', size: "50x50" %>
                 <% end %>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+              </td>
+              <td><%= link_to group.name, group_path(group.id) %></td>
+              <td><%= group.group_users.count %></td>
+              <% if group.is_owned_by?(current_user) %>
+                <td><%= link_to 'Edit', edit_group_path(group), class: "group_#{group.id} btn btn-sm btn-info" %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
