@@ -1,0 +1,56 @@
+<div class='container W-100 my-3'>
+  <div class='row my-4 w-75'>
+    <div class="col-12">
+      <h4 class="px-3 mb-3 text-start d-inline-block">
+        <%= "#{@group.name}" %>の編集
+      </h4>
+      <%= form_with model:@group, local: true do |f| %>
+        <div class="form-row mb-2">
+          <div class="col-form-label col-md-2">
+            グループ名
+          </div>
+          <div class="col-md-5">
+            <p class="form-control-plaintext">
+              <%= f.text_field :name %>
+            </p>
+          </div>
+        </div>
+
+        <div class="form-row mb-2">
+          <div class="col-form-label col-md-2">
+            紹介文
+          </div>
+          <div class="col-md-5">
+            <p class="form-control-plaintext">
+              <%= f.text_area :introduction %>
+            </p>
+          </div>
+        </div>
+
+        <div class="form-row mb-2">
+          <div class="col-form-label col-md-2">
+            グループ画像
+          </div>
+          <div class="col-md-5">
+            <p class="form-control-plaintext">
+              <%= f.file_field :group_image %>
+            </p>
+          </div>
+        </div>
+
+
+        <div class="form-row mb-3">
+          <div class="col-md-3">
+            <%= f.submit "編集内容を保存", class: "btn btn-info" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
