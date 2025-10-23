@@ -1,26 +1,83 @@
 <header>
-  <div>
-    <%= link_to root_path do %>
-      <%= image_tag "mygolfnote_logo.png", style: "width: 10%;" %>
-    <% end %>
-  </div>
   <nav class="navbar navbar-expand-lg navbar-light">
-    <% if admin_signed_in? %>
-      <%= link_to "ユーザー一覧", admin_users_path %>
-      <%= link_to "グループ一覧", admin_groups_path %>
-      <%= link_to "コメント一覧", admin_post_comments_path %>
-      <%= link_to "サインアウト", destroy_admin_session_path, method: :delete %>
-    <% elsif user_signed_in? %>
-      <%= link_to "Golf note", new_practice_post_path %>
-      <%= link_to "about", about_path %>
-      <%= link_to "MyPage", user_path(current_user) %>
-      <%= link_to "Group", new_group_path %>
-      <%= link_to "サインアウト", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "新規登録", new_user_registration_path %>
-      <%= link_to "サインイン", new_user_session_path %>
-      <%= link_to "about", about_path %>
-    <% end %>
+    <div class="container">
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <%= image_tag "mygolfnote_logo.png", alt: "MyGolfNote", class: "img-fluid" %>
+      <% end %>
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <% if admin_signed_in? %>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <%= link_to "ユーザー一覧", admin_users_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "グループ一覧", admin_groups_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "コメント一覧", admin_post_comments_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "サインアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
+            </li>
+          </ul>
+        </div>
+      <% elsif user_signed_in? %>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <%= link_to new_practice_post_path, class: "nav-link" do %>
+                <i class="fa-solid fa-golf-ball-tee"></i> Golf note
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to about_path, class: "nav-link" do %>
+                <i class="fa-solid fa-globe"></i> About
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to user_path(current_user), class: "nav-link" do %>
+                <i class="fa-solid fa-user-tie"></i> MyPage
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to new_group_path, class: "nav-link" do %>
+                <i class="fa-solid fa-users"></i> Group
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+                <i class="fa-solid fa-right-from-bracket"></i> ログアウト
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      <% else %>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <%= link_to new_user_registration_path, class: "nav-link" do %>
+                <i class="fa-solid fa-address-card"></i> 新規登録
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to new_user_session_path, class: "nav-link" do %>
+                <i class="fa-solid fa-right-to-bracket"></i> ログイン
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "about", about_path, class: "nav-link" %>
+            </li>
+          </ul>
+        </div>
+      <% end %>
+    
+    </div>
   </nav>
 
 </header>
