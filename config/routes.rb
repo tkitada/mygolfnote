@@ -30,9 +30,11 @@ Rails.application.routes.draw do
     end
     resources :users, only: [:index, :show, :edit, :update]
     resources :groups, only: [:new, :index, :show, :create, :edit, :update] do
+      resource :permits, only: [:create, :destroy]
       resource :group_users, only: [:create, :destroy]
       get "new/mail" => "groups#new_mail"
       get "send/mail" => "groups#send_mail"
+      get "permits" => "groups#permits"
     end
   end
 
