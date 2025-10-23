@@ -32,13 +32,27 @@
                   <li style="list-style: none;"><%= user.name %></li>
                 <% end %>
               </td>
-              <% if @group.is_owned_by?(current_user) %>
-                <td><%= link_to '編集', edit_group_path(@group), class: "btn btn-sm btn-success" %></td>
-                <td><%= link_to 'メンバーに通知', group_new_mail_path(@group), class: "btn btn-sm btn-info" %></td>
-              <% elsif @group.includesUser?(current_user) %>
-                <td><%= link_to '退会', group_group_users_path(@group), method: :delete, class: "btn btn-sm btn-danger" %></td>
+              <% if @group.group_users.exists?(user_id: current_user.id) %>
+                <td>
+                  <%= link_to 'グループ退出', group_group_users_path(@group), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "本当にグループを退出しますか？" } %>
+                </td>
+              <% elsif @group.permits.exists?(user_id: current_user.id) %>
+                <td><%= link_to '申請取消', group_permits_path(@group), method: :delete, class: "btn btn-sm btn-danger" %></td>
               <% else %>
-                <td><%= link_to '参加', group_group_users_path(@group), method: :post, class: "btn btn-sm btn-success" %></td>
+                <td><%= link_to '加入申請', group_permits_path(@group), method: :post, class: "btn btn-sm btn-success" %></td>
+              <% end %>
+              <% if @group.is_owned_by?(current_user) %>
+                <td>
+                  <div class="dropdown">
+                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="groupMenu_<%= @group.id %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      menu
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="groupMenu_<%= @group.id %>">
+                      <%= link_to '編集', edit_group_path(@group), class: "btn btn-sm btn-success" %>
+                      <%= link_to 'メンバーに通知', group_new_mail_path(@group), class: "btn btn-sm btn-info" %>
+                    </div>
+                  </div>
+                </td>
               <% end %>
             </tr>
         </tbody>

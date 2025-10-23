@@ -1,6 +1,7 @@
 class Public::GroupsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :ensure_correct_user, only: [:edit, :update, :permits]
+  before_action :set_user, only: [:show, :edit, :update, :permits]
 
   def index
     @groups = Group.all
@@ -35,6 +36,10 @@ class Public::GroupsController < ApplicationController
     end
   end
 
+  def permits
+    @permits = @group.permits.page(params[:page])
+  end
+
   def new_mail
     @group = Group.find(params[:group_id])
   end
@@ -50,6 +55,13 @@ class Public::GroupsController < ApplicationController
 
   def group_params
     params.require(:group).permit(:name, :introduction, :group_image)
+  end
+
+  def ensure_correct_user
+    @group = Group.find(params[:id])
+    unless @group.owner_id == current_user.id
+      redirect_to group_path(@group)
+    end
   end
 
   def set_user
