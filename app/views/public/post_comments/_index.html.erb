@@ -11,7 +11,7 @@
         <td><%= post_comment.comment %></td>
         <td>
           <% if post_comment.user == current_user %>
-            <%= link_to "Destroy", practice_post_post_comment_path(practice_post, post_comment), method: :delete, class: "btn btn-sm btn-danger float-end", remote: true %>
+            <%= link_to "削除", practice_post_post_comment_path(practice_post, post_comment), method: :delete, class: "btn btn-sm btn-danger float-end", remote: true %>
           <% end %>
         </td>
       </tr>

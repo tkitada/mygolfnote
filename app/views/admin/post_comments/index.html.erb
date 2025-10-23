@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4 class="my-5">コメント一覧</h4>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ユーザー名</th>
+              <th>練習テーマ</th>
+              <th>コメント</th>
+              <th>コメント投稿日</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @post_comments.each do |comment| %>
+              <tr>
+                <td><%= link_to comment.user.name, admin_user_path(comment.user) %></td>
+                <td><%= comment.practice_post.practice_focus %></td>
+                <td><%= comment.comment %></td>
+                <td><%= l(comment.created_at, format: :short) %></td>
+                <td>
+                  <%= link_to "削除", admin_post_comment_path(comment), method: :delete, data: { confirm: "このコメントを本当に削除しますか？" }, class: "btn btn-danger" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div> 
+
