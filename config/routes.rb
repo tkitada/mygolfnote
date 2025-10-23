@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'groups/index'
+  end
   #devise関連（顧客用）
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -37,6 +40,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'users#index'
     resources :users, only: [:index, :show, :edit, :update]
+    resources :groups, only: [:index, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

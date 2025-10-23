@@ -7,6 +7,7 @@
   <nav class="navbar navbar-expand-lg navbar-light">
     <% if admin_signed_in? %>
       <%= link_to "ユーザー一覧", admin_users_path %>
+      <%= link_to "グループ一覧", admin_groups_path %>
       <%= link_to "サインアウト", destroy_admin_session_path, method: :delete %>
     <% elsif user_signed_in? %>
       <%= link_to "Golf note", new_practice_post_path %>
