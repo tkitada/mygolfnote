@@ -51,7 +51,7 @@ class Public::PracticePostsController < ApplicationController
 
   def search_tag
     @tag_list = Tag.all
-    @tag = Tag.find(params[:tag_id])
+    @tag = Tag.find_by(params[:tag_id])
     @practice_posts = @tag.practice_posts
   end
 

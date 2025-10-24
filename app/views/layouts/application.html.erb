@@ -13,20 +13,22 @@
 
   <body class="d-flex flex-column min-vh-100">
     <%= render "layouts/header" %>
-
-    <div class="main-visual">
-      <div class="main-visual-content">
-        <h3 class="main-visual-title display-4 font-weight-bold">MyGolfnote</h3>
-        <p class="main-visual-text">あなたのゴルフ練習を記録・共有しよう</p>
+    
+    <% if controller_name == "practice_posts" && action_name == "index" %>
+      <div class="main-visual">
+        <div class="main-visual-content">
+          <h3 class="main-visual-title display-4 font-weight-bold">MyGolfnote</h3>
+          <p class="main-visual-text">あなたのゴルフ練習を記録・共有しよう</p>
+        </div>
       </div>
-    </div>
+    <% end %>
 
     <main>
       <% if flash[:notice] %>
         <div class="flash notice"><%= flash[:notice] %></div>
       <% end %>   
       <% if flash[:alert] %>
-          div class="flash alert"><%= flash[:alert] %></div>
+        <div class="flash alert"><%= flash[:alert] %></div>
       <% end %>
     
       <div class="d-flex justify-content-center mb-2">

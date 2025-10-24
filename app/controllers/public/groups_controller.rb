@@ -21,7 +21,7 @@ class Public::GroupsController < ApplicationController
       @group.users << current_user
       redirect_to groups_path, method: :post, notice: "グループを作成しました"
     else
-      render :new
+      render :new, alert: "空のフォームがあります"
     end
   end
 
@@ -30,9 +30,9 @@ class Public::GroupsController < ApplicationController
 
   def update
     if @group.update(group_params)
-      redirect_to groups_path
+      redirect_to groups_path, notice: "情報の更新に成功しました"
     else
-      render "edit"
+      render "edit", alert: "空のフォームがあります"
     end
   end
 
