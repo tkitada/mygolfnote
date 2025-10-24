@@ -9,5 +9,13 @@ class EventMailer < ApplicationMailer
       bcc: group.users.pluck(:email), 
       subject: mail_title
     )
+
+    group_users.each do |user|
+      Notification.create!(
+        user: user,
+        notifiable: @group,
+        read: false
+      )
+    end
   end
 end

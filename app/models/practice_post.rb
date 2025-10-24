@@ -29,6 +29,4 @@ class PracticePost < ApplicationRecord
   end
 
 
-
-
 end
