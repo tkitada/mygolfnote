@@ -50,10 +50,19 @@ class Public::GroupsController < ApplicationController
 
   def send_mail
     @group = Group.find(params[:group_id])
+    group_users = @group.users
     @mail_title = params[:mail_title]
     @mail_content = params[:mail_content]
     EventMailer.send_mail(@group, @mail_title, @mail_content).deliver_now
+
+    group_users.each do |user|
+      Notification.create!(
+        user: user,
+        notifiable: @group,
+      )
+    end
   end
+
 
   private
 
