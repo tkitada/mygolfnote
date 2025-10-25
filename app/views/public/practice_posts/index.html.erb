@@ -1,8 +1,15 @@
-<% @tag_list.each do |list| %>
-  <i class="fa-sharp fa-solid fa-tag"></i>
-  <%= link_to list.name, search_tag_path(tag_id: list.id), class: "badge badge-dark rounded-pill" %>
-  <%= "(#{list.practice_posts.count})" %>
-<% end %>
+<div class="dropdown mb-3 ">
+  <button class="btn btn-success dropdown-toggle" type="button" id="tagDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    タグ一覧
+  </button>
+  <div class="dropdown-menu" aria-labeledby="tagDropdown">
+    <% @tag_list.each do |list| %>
+      <i class="fa-sharp fa-solid fa-tag"></i>
+      <%= link_to list.name, search_tag_path(tag_id: list.id), class: "badge badge-dark rounded-pill" %>
+      <%= "(#{list.practice_posts.count})" %>
+    <% end %>
+  </div>
+</div>
 
 <div class="card-list-container py-5">
   <% @practice_posts.each do |practice_post| %>

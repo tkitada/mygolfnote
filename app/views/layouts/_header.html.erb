@@ -50,6 +50,32 @@
                 <i class="fa-solid fa-users"></i> Group
               <% end %>
             </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle position-relative" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa-solid fa-bell"></i>
+                <% unread_count = current_user.notifications.unread.count %>
+                <% if unread_count.positive? %>
+                  <span class="badge badge-danger position-absolute" style="top:0; right:0;">
+                    <%= unread_count %>
+                  </span>
+                <% end %>
+              </a>
+
+              <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="navbarDropdown" style="min-width: 300px;">
+                <% if current_user.notifications.where(read: false).any? %>
+                  <small class="dropdown-item disabled">直近5件の未読の通知を表示しています</small>
+                  <% current_user.notifications.where(read: false).limit(5).order(created_at: :desc).each do |notification| %>
+                    <div class="dropdown-item <%= 'font-weight-bold' unless notification.read %>">
+                      <%= link_to notification_message(notification), notification_path(notification), method: :patch, class: "text-dark" %>
+                      <br>
+                      <small class="text-muted"><%= time_ago_in_words(notification.created_at) %>前</small>
+                    </div>
+                  <% end %>
+                <% else %>
+                  <span class="dropdown-item text-muted">通知はありません</span>
+                <% end %>
+              </div>
+            </li>
             <li class="nav-item">
               <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
                 <i class="fa-solid fa-right-from-bracket"></i> ログアウト

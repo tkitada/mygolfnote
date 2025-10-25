@@ -7,7 +7,8 @@ class EventMailer < ApplicationMailer
 
     mail(
       bcc: group.users.pluck(:email), 
-      subject: mail_title
+      subject: mail_title,
+      from: '"MyGolfnote運営" <no-reply@example.com>'
     )
   end
 end

@@ -31,9 +31,11 @@
         <div class="flash alert"><%= flash[:alert] %></div>
       <% end %>
     
-      <div class="d-flex justify-content-center mb-2">
-        <%= render "public/searches/searchform" %>
-      </div>
+      <% if controller_name == "practice_posts" && action_name == "index" %>
+        <div class="d-flex justify-content-center mb-2">
+          <%= render "public/searches/searchform" %>
+        </div>
+      <% end %>
         
       <%= yield %>
     </main>
