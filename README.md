@@ -35,3 +35,5 @@
 - IDE：Visual Studio Code（VSCode）
 ​
 ## 使用素材
+- 素材写真：Adobe Stock (https://stock.adobe.com/jp)
+- ロゴ：Google Gemini
