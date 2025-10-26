@@ -1,20 +1,23 @@
-<table>
-  <tbody>
-    <% practice_post.post_comments.each do |post_comment| %>
-      <tr>
-        <td>
-          <%= link_to user_path(practice_post.user) do %>
-            <%= profile_image_for(practice_post.user, size: 50) %><br>
-            <%= post_comment.user.name %>
-          <% end %>
-        </td>
-        <td><%= post_comment.comment %></td>
-        <td>
+<div class="comment-list mt-4">
+  <% practice_post.post_comments.each do |post_comment| %>
+    <div class="comment-item d-flex align-items-start mb-4">
+      <div class="comment-avatar mr-3 text-center">
+        <%= link_to user_path(practice_post.user) do %>
+          <%= profile_image_for(practice_post.user, size: 50) %><br>
+          <small><%= post_comment.user.name %></small>
+        <% end %>
+      </div>
+      <div class="comment-bubble">
+        <div class="comment-content">
+          <p class="mb-0"><%= post_comment.comment %></p>
+        </div>
+        <div class="comment-meta text-muted small mt-1">
+          <%= l(post_comment.created_at, format: :short) %>
           <% if post_comment.user == current_user %>
-            <%= link_to "削除", practice_post_post_comment_path(practice_post, post_comment), method: :delete, class: "btn btn-sm btn-danger float-end", remote: true %>
+            <%= link_to "削除", practice_post_post_comment_path(practice_post, post_comment), method: :delete, class: "text-danger ml-2 small", remote: true %>
           <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
