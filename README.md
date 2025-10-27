@@ -38,4 +38,5 @@
 ​
 ## 使用素材
 - 素材写真：Adobe Stock (https://stock.adobe.com/jp)
+- プロフィール・グループ写真：いらすと屋 (https://www.irasutoya.com/)
 - ロゴ：Google Gemini
