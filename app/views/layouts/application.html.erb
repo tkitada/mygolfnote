@@ -59,10 +59,10 @@
 
     <main>
       <% if flash[:notice] %>
-        <div class="flash notice"><%= flash[:notice] %></div>
+        <div class="flash notice my-3"><%= flash[:notice] %></div>
       <% end %>   
       <% if flash[:alert] %>
-        <div class="flash alert"><%= flash[:alert] %></div>
+        <div class="flash alert my-3"><%= flash[:alert] %></div>
       <% end %>
     
       <% if controller_name == "practice_posts" && action_name == "index" %>
