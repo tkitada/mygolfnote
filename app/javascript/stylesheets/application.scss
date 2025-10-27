@@ -2,21 +2,30 @@
 @import "trix";
 @import "./actiontext";
 
+/*main visual*/
+/*top page設定*/
 .main-visual {
   background-image: url('../images/golfcourse_player.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 400px;
+  height: 350px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
 }
+/*group page設定*/
+.group-visual {
+  background-image: url('../images/golf_people.jpeg');
+  height: 250px !important;
+}
 .main-visual-content {
-  width: 40%;
+  width: 50%;
   background-color: rgba(0, 0, 0, 0.5);
   text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .main-visual-title {
   color: #fff;
@@ -25,7 +34,7 @@
   color: #fff;
 }
 
-
+/*header設定*/
 header {
   background: #ffffff;
   color: #ffffff;
@@ -34,21 +43,23 @@ header {
 .navbar-nav {
   white-space: nowrap;
 }
-.navbar-nav .nav-link .nav-item {
+.navbar-nav .nav-item .nav-link {
   white-space: nowrap;
   display: inline-block;
   padding: 0.5rem 1rem;
   font-weight: 500;
-  color: #555 !important;
+  font-size: 1.05rem;
+  color: #5cad51 !important;
+  transition: all 0.3s ease;
 }
 .navbar {
   background: transparent !important;
   border-bottom: 2px solid #f0f0f0;
   font-family: 'Noto Sans JP', sans-serif;
 }
-.navbar .nav-link:hover {
-  border-bottom: 2px solid #a8e6a3;
-  color: #a8e6a3 !important;
+.navbar-nav .nav-item .nav-link:hover {
+  border-bottom: 2px solid #2f6d2f;
+  color: #2f6d2f !important;
   text-shadow: 0 0 4px rgba(255, 255, 255, 0.7);
 }
 .navbar-brand img {
