@@ -25,9 +25,9 @@
 
 
 ## 設計書
-ER図：https://drive.google.com/file/d/1nCOTdg9lqQASRPlWxUxtEZXAy55UdSL_/view?usp=sharing
-UI_Flow：https://drive.google.com/file/d/1l5MKB6ZTNiS9EL-B4Oed7IDrQqfbRqbq/view?usp=sharing
-テーブル定義書：https://docs.google.com/spreadsheets/d/1HaHVdRSuwdYAsiOv4vRaGkpbFPorncMXeZu1td0HJa4/edit?usp=sharing
+- ER図：https://drive.google.com/file/d/1nCOTdg9lqQASRPlWxUxtEZXAy55UdSL_/view?usp=sharing
+- UI_Flow：https://drive.google.com/file/d/1l5MKB6ZTNiS9EL-B4Oed7IDrQqfbRqbq/view?usp=sharing
+- テーブル定義書：https://docs.google.com/spreadsheets/d/1HaHVdRSuwdYAsiOv4vRaGkpbFPorncMXeZu1td0HJa4/edit?usp=sharing
 ​
 ## 開発環境
 - OS：Linux(Ubuntu)
