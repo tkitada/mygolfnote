@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'groups/index'
-  end
   #devise関連（顧客用）
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -12,7 +9,12 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
+  #ゲストユーザーログイン
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
   
+  #About page
   get "about", to: "homes#about", as: "about"
   
   #顧客側routing
