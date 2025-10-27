@@ -11,25 +11,31 @@
                   <div class="col-12">
                     <h5 class="card-title">
                       <%= link_to practice_post_path(practice_post), class: "text-dark" do %>
-                        <i class="far fa-flag"></i> <%= practice_post.practice_focus %>
+                        <i class="fa-solid fa-bullseye"></i> <%= practice_post.practice_focus %>
                       <% end %>
                     </h5>
-                    <p class="card-text">メモ：<%= practice_post.content %></p>
-                    <span id="favorite_btn_<%= practice_post.id %>">
-                      <%= render "public/favorites/btn", practice_post: practice_post %>
-                    </span>
+                    <p class="card-text"><i class="fa-solid fa-file-pen"></i>：<%= practice_post.content %></p>
+                    <div class="d-flex align-items-center mt-2">
+                      <span id="favorite_btn_<%= practice_post.id %>">
+                        <%= render "public/favorites/btn", practice_post: practice_post %>
+                      </span>
+                      <span class="ml-3 text-muted">
+                        <i class="fa-regular fa-comment"></i><%= practice_post.post_comments.count %>
+                      </span>
+                    </div>
                     <p>
                       <% practice_post.tags.each do |tag| %>
                         <span class="badge badge-dark rounded-pill"><%= tag.name %></span>
                       <% end %>
                     </p>
-                    <p>
-                      <i class="fa-regular fa-comment"></i> コメント数： <%= practice_post.post_comments.count %>
-                    </p>
                   </div>
                 </div>
                 <% if @user == current_user %>
-                  <%= link_to "編集", edit_practice_post_path(practice_post.id), class: " btn btn-success" %>
+                  <div class="d-flex justify-content-end mt-2">
+                    <%= link_to edit_practice_post_path(practice_post.id), class: " btn btn-secondary" do %>
+                      <i class="fa-solid fa-pen-to-square"></i>
+                    <% end %>
+                  </div>
                 <% end %>
               </div>
             </div>

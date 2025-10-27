@@ -1,6 +1,6 @@
 <div class="dropdown mb-3 ml-3">
   <button class="btn btn-success dropdown-toggle" type="button" id="tagDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    タグ一覧
+  <i class="fa-sharp fa-solid fa-tag"></i>タグ一覧
   </button>
   <div class="dropdown-menu" aria-labeledby="tagDropdown">
     <% @tag_list.each do |list| %>
@@ -24,10 +24,10 @@
         <div class="col-10">
           <p class="card-title">
             <%= link_to(practice_post_path(practice_post.id), class: "text-dark") do %>
-              <strong><i class="far fa-flag"></i><span> <%= practice_post.practice_focus %></span></strong>
+              <strong><i class="fa-solid fa-bullseye"></i><span> <%= practice_post.practice_focus %></span></strong>
             <% end %>
           </p>
-          <p class="card-text">説明：<%= practice_post.content %></p>
+          <p class="card-text"><i class="fa-solid fa-file-pen"></i>：<%= practice_post.content %></p>
           <span>
             <i class="fas fa-user"></i> By <%= practice_post.user.name %> ｜ 
             <i class="fa-regular fa-comment"></i> コメント数： <%= practice_post.post_comments.count %> ｜
