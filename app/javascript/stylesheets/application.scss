@@ -67,6 +67,8 @@ header {
   height: auto;
   margin-right: 20px;
 }
+
+/*about page設定*/
 .hero-section {
   position: relative;
   height: 100vh;
@@ -100,7 +102,7 @@ header {
   top: 20%;
   z-index: 2;
 }
-.hero-section h1 {
+.hero-section h3 {
   font-size: 3rem;
   font-weight: 700;
   line-height: 1.4;
