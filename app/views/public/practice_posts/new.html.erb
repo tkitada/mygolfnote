@@ -1,6 +1,6 @@
-<div class='container W-100 my-3'>
+<div class='container my-4'>
   <div class='row justify-content-center'>
-    <div class="col-md-8">
+    <div class="col-md-10 col-lg-9">
       <% if @practice_post.errors.any? %>
         <%= @practice_post.errors.count %>件のエラーが発生しました
         <ul>
@@ -9,43 +9,48 @@
           <% end %>
         </ul>
       <% end %>
-      <h4 class="px-3 mb-2 fs-6 text-start d-inline-block">
-        Golf note
-      </h4>
-   
-      <%= form_with model: @practice_post, url: practice_posts_path, local: true do |f| %>
-
-        <div class="mb-3">
-          <%= f.label :pratice_date, "練習日", class: "form-label" %>
-          <span class="badge badge-danger">必須</span>
-          <%= f.date_field :practice_date, class: "form-control" %>
+      <div class="card shadow-lg border-0">
+        <div class="card-header bg-success text-white">
+          <i class="fa-solid fa-golf-ball-tee"></i>Golf note
         </div>
+        <div class="card-body">
+          <%= form_with model: @practice_post, url: practice_posts_path, local: true do |f| %>
 
-        <div class="mb-3">
-          <%= f.label :pratice_focus, "練習テーマ", class: "form-label" %>
-          <%= f.text_field :practice_focus, class: "form-control", placeholder: "飛距離アップ・スライス矯正など" %>
-        </div>
+            <div class="form-group col-md-4">
+              <%= f.label :pratice_date, "練習日", class: "font-weight-bold" %>
+              <span class="badge badge-danger ml-1">必須</span>
+              <%= f.date_field :practice_date, class: "form-control" %>
+            </div>
 
-        <div class="mb-3">
-          <%= f.label :shot_hits, "球数", class: "form-label" %>
-          <%= f.number_field :shot_hits, class: "form-control", placeholder: "50" %>
-        </div>
+            <div class="form-group col-md-5">
+              <%= f.label :pratice_focus, "練習テーマ", class: "font-weight-bold" %>
+              <%= f.text_field :practice_focus, class: "form-control", placeholder: "飛距離アップ・スライス矯正など" %>
+            </div>
 
-        <div class="mb-3">
-          <%= f.label :content, "練習メモ(自由記述)", class: "form-label" %>
-          <span class="badge badge-danger">必須</span>
-          <%= f.rich_text_area :content %>
-        </div>
+            <div class="form-group col-md-3">
+              <%= f.label :shot_hits, "球数", class: "font-weight-bold" %>
+              <%= f.number_field :shot_hits, class: "form-control", placeholder: "50" %>
+            </div>
 
-        <div class="mb-3">
-          <label>タグ付け (","で区切ると複数タグ登録が可能)</label>
-          <%= f.text_field :name, value: @tag_list, class: "form-control" %>
-        </div>
+            <div class="form-group mb-3">
+              <%= f.label :content, "練習メモ(自由記述)", class: "font-weight-bold" %>
+              <span class="badge badge-danger ml-1">必須</span>
+              <%= f.rich_text_area :content %>
+            </div>
 
-        <div class="mb-3">
-          <%= f.submit "投稿", class: "btn btn-success" %>
+            <div class="form-group mb-4">
+              <label class="font-weight-bold">タグ付け (","で区切ると複数登録可)</label>
+              <%= f.text_field :name, value: @tag_list, class: "form-control" %>
+            </div>
+
+            <div class="text-right">
+              <%= button_tag type: 'submit', class: "btn btn-success" do %>
+                <i class="fa-solid fa-file-pen"></i>
+              <% end %>
+            </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>
