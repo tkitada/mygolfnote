@@ -1,6 +1,7 @@
 class Favorite < ApplicationRecord
   belongs_to :user
   belongs_to :practice_post
+  has_many :notifications, as: :notifiable, dependent: :destroy
   
   after_create :create_notification
 

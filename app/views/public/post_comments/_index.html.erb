@@ -2,8 +2,8 @@
   <% practice_post.post_comments.each do |post_comment| %>
     <div class="comment-item d-flex align-items-start mb-4">
       <div class="comment-avatar mr-3 text-center">
-        <%= link_to user_path(practice_post.user) do %>
-          <%= profile_image_for(practice_post.user, size: 50) %><br>
+        <%= link_to user_path(post_comment.user) do %>
+          <%= profile_image_for(post_comment.user, size: 50) %><br>
           <small><%= post_comment.user.name %></small>
         <% end %>
       </div>

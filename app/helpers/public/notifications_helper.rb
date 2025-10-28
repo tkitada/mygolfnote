@@ -1,5 +1,7 @@
 module Public::NotificationsHelper
   def notification_message(notification)
+    notifiable = notification.notifiable
+    
     case notification.notifiable_type
     when "Favorite"
       "#{notification.notifiable.user.name}さんがあなたの投稿にいいねしました"

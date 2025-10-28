@@ -5,17 +5,24 @@ class Public::NotificationsController < ApplicationController
   def update
     @notification = current_user.notifications.find(params[:id])
     @notification.update(read: true)
-    case @notification.notifiable
+    notifiable = @notification.notifiable
+
+    if notifiable.nil?
+      redirect_to root_path, alert: "リンク先が見つかりませんでした"
+      return
+    end
+
+    case @notification.notifiable_type
     when "PostComment"
-      redirect_to practice_post_path(@notification.notifiable.practice_post)
+      redirect_to practice_post_path(notifiable.practice_post)
     when "Favorite"
-      redirect_to practice_post_path(@notification.notifiable.practice_post)
+      redirect_to practice_post_path(notifiable.practice_post)
     when "Permit"
-      redirect_to group_path(@notification.notifiable.group)
+      redirect_to group_path(notifiable.group)
     when "GroupUser"
-      redirect_to group_path(@notification.notifiable.group)
+      redirect_to group_path(notifiable.group)
     when "GroupMail"
-      redirect_to group_path(@notification.notifiable.group)
+      redirect_to group_path(notifiable.group)
     else
       redirect_to root_path, alert: "リンク先が見つかりませんでした"
     end
