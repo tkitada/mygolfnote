@@ -5,6 +5,7 @@ class Public::PracticePostsController < ApplicationController
   def index
     @practice_posts = PracticePost.all
     @tag_list = Tag.all
+    @practice_posts = PracticePost.all.page(params[:id])
   end
 
   def new
