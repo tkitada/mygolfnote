@@ -57,7 +57,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 
 # プロジェクトごとにファイルベースで環境変数を管理する
-gem 'dotenv-rails'
+gem 'dotenv-rails', groups: [:development, :test, :production]
 # 本番環境用データベースエンジン
 group :production do
   gem 'mysql2'
