@@ -43,7 +43,7 @@
         </div>
       </div>
     
-    <% elsif controller_name == "groups" && ["index", "new"].include?(action_name) %>
+    <% elsif controller_name == "groups" && ["index", "new"].include?(action_name) && !controller_path.start_with?("admin/") %>
       <div class="main-visual group-visual">
         <div class="main-visual-content">
           <h3 class="main-visual-title display-4 font-weight-bold">Golf仲間とつながろう</h3>
