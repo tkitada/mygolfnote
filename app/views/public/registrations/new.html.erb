@@ -1,59 +1,60 @@
-<div class='container W-100 my-3'>
-  <div class='row my-4 w-75'>
-    <div class="col-12">
-      <h4 class="table-light thead-color px-3 mb-2 fs-6 text-start d-inline-block">
-        新規ユーザー登録
-      </h4>
+<div class='container W-100 my-4'>
+  <div class='row justify-content-center'>
+    <div class="col-md-7">
+      <div class="card shadow-lg border-0">
+        <div class="card-header bg-success text-white">新規ユーザー登録</div>
+        <div class="card-body">
+          <%= form_with model: @user, url: registration_path(@user) do |f| %>
+            <%= render "public/shared/error_messages", resource: resource %>
 
-      <%= form_with model: @user, url: registration_path(@user) do |f| %>
-        <%= render "public/shared/error_messages", resource: resource %>
+            <div class="form-group">
+              <%= f.label :name, "アカウント名", class: "form-label" %>
+              <span class="badge badge-danger">必須</span>
+              <%= f.text_field :name, class: "form-control w-100", placeholder: "ゴル吉ゴル僧" %>
+            </div>
 
-        <div class="mb-3">
-          <%= f.label :name, "アカウント名", class: "form-label" %>
-          <span class="badge badge-danger">必須</span>
-          <%= f.text_field :name, class: "form-control", placeholder: "ゴル吉ゴル僧" %>
+            <div class="form-group">
+              <%= f.label :best_score, "ベストスコア", class: "form-label" %>
+              <span class="badge badge-secondary">任意</span>
+              <%= f.number_field :best_score, class: "form-control", placeholder: "99" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :average_score, "平均スコア", class: "form-label" %>
+              <span class="badge badge-secondary">任意</span>
+              <%= f.number_field :average_score, class: "form-control", placeholder: "105" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :golf_experience, "ゴルフ歴 (年数)", class: "form-label" %>
+              <span class="badge badge-secondary">任意</span>
+              <%= f.number_field :golf_experience, class: "form-control", placeholder: "2" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :email, "メールアドレス", class: "form-label" %>
+              <span class="badge badge-danger">必須</span>
+              <%= f.email_field :email, class: "form-control w-100", placeholder: "sample@example.com" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :password, "パスワード(6文字以上)", class: "form-label" %>
+              <span class="badge badge-danger">必須</span>
+              <%= f.password_field :password, autocomplete: "new-password", class: "form-control w-100" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :password, "パスワード(確認用)", class: "form-label" %>
+              <span class="badge badge-danger">必須</span>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control w-100" %>
+            </div>
+
+            <div class="text-right mt-2">
+              <%= f.submit "新規登録", class: "btn btn-success" %>
+            </div>
+          <% end %>
         </div>
-
-        <div class="mb-3">
-          <%= f.label :best_score, "ベストスコア", class: "form-label" %>
-          <span class="badge badge-secondary">任意</span>
-          <%= f.number_field :best_score, class: "form-control", placeholder: "99" %>
-        </div>
-
-        <div class="mb-3">
-          <%= f.label :average_score, "平均スコア", class: "form-label" %>
-          <span class="badge badge-secondary">任意</span>
-          <%= f.number_field :average_score, class: "form-control", placeholder: "105" %>
-        </div>
-
-        <div class="mb-3">
-          <%= f.label :golf_experience, "ゴルフ歴 (年数)", class: "form-label" %>
-          <span class="badge badge-secondary">任意</span>
-          <%= f.number_field :golf_experience, class: "form-control", placeholder: "2" %>
-        </div>
-
-        <div class="mb-3">
-          <%= f.label :email, "メールアドレス", class: "form-label" %>
-          <span class="badge badge-danger">必須</span>
-          <%= f.email_field :email, class: "form-control", placeholder: "sample@example.com" %>
-        </div>
-
-        <div class="mb-3">
-          <%= f.label :password, "パスワード(6文字以上)", class: "form-label" %>
-          <span class="badge badge-danger">必須</span>
-          <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
-        </div>
-
-        <div class="mb-3">
-          <%= f.label :password, "パスワード(確認用)", class: "form-label" %>
-          <span class="badge badge-danger">必須</span>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
-        </div>
-
-        <div class="mb-3">
-          <%= f.submit "新規登録", class: "btn btn-success" %>
-        </div>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>
