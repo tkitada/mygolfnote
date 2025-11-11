@@ -67,3 +67,5 @@ gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
 gem "kaminari"
+# AWS-SDKを使ってS3と連携
+gem "aws-sdk-s3", "~> 1.146"
