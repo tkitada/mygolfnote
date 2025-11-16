@@ -69,3 +69,6 @@ gem "net-imap"
 gem "kaminari"
 # AWS-SDKを使ってS3と連携
 gem "aws-sdk-s3", "~> 1.146"
+# 言語翻訳gem
+gem "rails-i18n"
+gem "devise-i18n-views"
