@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    attributes:
+      contact:
+        subject:
+          bug_report: "不具合報告"
+          suggestion: "改善要望"
+          question: "質問"
+          other: "その他"
+
