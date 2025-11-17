@@ -4,21 +4,21 @@
       <div class="card shadow-lg border-0">
         <div class="card-header bg-success text-white">お問合せフォーム</div>
         <div class="card-body">
-          <%= form_with model: @contact, url: contact_path(@contact), method: :get, local: true do |f| %>
+          <%= form_with model: @contact, url: contacts_path, local: true do |f| %>
             <div class="form-group">
-              <%= f.label :name, 'お名前*' %>
+              <%= f.label :name, 'お名前*', class: "font-weight-bold" %>
               <%= f.text_field :name, class: "form-control" %>
             </div>
             <div class="form-froup">
-              <%= f.label :email, '送信先メールアドレス*' %>
+              <%= f.label :email, '送信先メールアドレス*', class: "font-weight-bold" %>
               <%= f.email_field :email, class: "form-control" %>
             </div>
-            <div class="form-group">
-              <%= f.label :subject, 'お問い合せ件名*' %>
+            <div class="form-group mt-3">
+              <%= f.label :subject, 'お問い合せ件名*', class: "font-weight-bold" %>
               <%= f.select :subject, Contact.subjects.keys.map { |k| [I18n.t("activerecord.attributes.contact.subject.#{k}"), k] } %>
             </div>
             <div class="form-group">
-              <%= f.label :messgae %>
+              <%= f.label :message, 'お問い合せ内容*', class: "font-weight-bold" %>
               <%= f.text_area :message, rows: 6, class: "form-control" %>
             </div>
             <div class="text-right">

@@ -1,11 +1,21 @@
-<footer class="border-top text-center" style="border-color:black !important;">
+<footer class="border-top py-3" style="border-color:black !important;">
   <div class="container">
-    <div class="footer_logo my-3">
-      <%= link_to root_path do %>
-        <%= image_tag "mygolfnote_logo.png", style: "width: 5%;" %>
-      <% end %>
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="footer_logo">
+        <%= link_to root_path do %>
+          <%= image_tag "mygolfnote_logo.png", style: "width: 80px;" %>
+        <% end %>
+      </div>
+
+      <div class="footer_contact">
+        <%= link_to new_contact_path, class: "text-decoration-none font-weight-bold" do %>
+          <i class="fa-solid fa-envelope"></i> 運営へのお問い合せ
+        <% end %>
+      </div>
     </div>
-    <div class="footer_info">
-      <p>(c)copyright MyGolfnote 2025 Allrights reserved.</p>
-    </div>
+
+      <div class="text-center mt-2 footer_info">
+        <p class="mb-0 small">(c)copyright MyGolfnote 2025 Allrights reserved.</p>
+      </div>
+  </div>
 </footer>
