@@ -72,3 +72,5 @@ gem "aws-sdk-s3", "~> 1.146"
 # 言語翻訳gem
 gem "rails-i18n"
 gem "devise-i18n-views"
+# enum
+gem "enum_help"
