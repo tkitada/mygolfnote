@@ -5,7 +5,7 @@ class ContactMailer < ApplicationMailer
     @contact = contact
     mail(
       from: @contact.email,
-      subject: '【お問い合わせ】'
+      subject: '【お問い合わせ】' + @contact.subject_i18n
     )
   end
 end
