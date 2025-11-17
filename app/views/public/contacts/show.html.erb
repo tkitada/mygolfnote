@@ -1,0 +1,18 @@
+<div class="container d-flex flex-column align-items-center text-left">
+  <div>
+    <h4 class="mb-3">送信が完了しました</h4>
+    <p class="mb-1">内容は以下の通りです。</p>
+    <div>
+      [お名前]:<p class="font-weight-bold"><%= @contact.name %></p>
+    </div>
+    <div>
+      [返信先メール]:<p class="font-weight-bold"><%= @contact.email %></p>
+    </div>
+    <div>
+      [お問い合せ件名]:<p class="font-weight-bold"><%= t("activerecord.attributes.contact.subjects.#{@contact.subject}") %></p>
+    </div>
+    <div>
+      [お問い合せ内容]<p class="font-weight-bold"> <%= @contact.message %></p>
+    </div>
+  </div>
+</div>

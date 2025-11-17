@@ -8,11 +8,15 @@ class Public::ContactsController < ApplicationController
     
     if @contact.save
       ContactMailer.contact_email(@contact).deliver_later
-      redirect_to new_contact_path, notice: "お問い合わせを送信しました"
+      redirect_to contact_path(@contact), notice: "お問い合わせを送信しました"
     else
       flash.now[:alert] = "入力内容に誤りがあります"
       render :new
     end
+  end
+
+  def show
+    @contact = Contact.find(params[:id])
   end
 
   private
