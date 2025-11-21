@@ -22,9 +22,9 @@ class PracticePost < ApplicationRecord
     old_tags.each do |oid_name|
       self.tags.delete Tag.find_by(name:old_name)
     end
-    new_tags.each do |new_name|
-      post_tag = Tag.find_or_create_by(name:new_name)
-      self.tags << post_tag
+    new_tags.uniq.each do |new_name|
+      tag = Tag.find_or_create_by(name:new_name)
+      self.tags << tag unless self.tags.include?(tag)
     end
   end
 
