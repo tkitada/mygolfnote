@@ -1,10 +1,26 @@
+# 共通のエラーメッセージ
 ja:
+  errors:
+    messages:
+      blank: "を入力して下さい"
+# 新規ユーザー登録
   activerecord:
     attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+  #　問い合わせフォームのenum設定
       contact:
         subject:
           bug_report: "不具合報告"
           suggestion: "改善要望"
           question: "質問"
           other: "その他"
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "を入力してください"
 
