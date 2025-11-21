@@ -14,7 +14,7 @@
         <div class="comment-meta text-muted small mt-1">
           <%= l(post_comment.created_at, format: :short) %>
           <% if post_comment.user == current_user %>
-            <%= link_to "削除", practice_post_post_comment_path(practice_post, post_comment), method: :delete, class: "text-danger ml-2 small", remote: true %>
+            <%= link_to "削除", practice_post_post_comment_path(practice_post, post_comment), method: :delete, class: "text-danger ml-2 small", data: {confirm: "本当に削除しますか？"}, remote: true %>
           <% end %>
         </div>
       </div>
