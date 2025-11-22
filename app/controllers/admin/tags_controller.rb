@@ -3,7 +3,9 @@ class Admin::TagsController < ApplicationController
 
   def index
     @tags = Tag.all.order(created_at: :desc)
+    @tag = Tag.new
   end
+
 
   def edit
   end
