@@ -1,18 +1,18 @@
 <div class='container my-4'>
   <div class='row justify-content-center'>
     <div class="col-md-10 col-lg-9">
-      <% if @practice_post.errors.any? %>
+      <div class="card shadow-lg border-0">
+        <div class="card-header bg-success text-white">
+          <i class="fa-solid fa-golf-ball-tee"></i>Golf note
+        </div>
+        <% if @practice_post.errors.any? %>
         <%= @practice_post.errors.count %>件のエラーが発生しました
-        <ul>
+        <ul class="error-messages">
           <% @practice_post.errors.full_messages.each do |message| %>
             <li><%= message %></li>
           <% end %>
         </ul>
       <% end %>
-      <div class="card shadow-lg border-0">
-        <div class="card-header bg-success text-white">
-          <i class="fa-solid fa-golf-ball-tee"></i>Golf note
-        </div>
         <div class="card-body">
           <%= form_with model: @practice_post, url: practice_posts_path, local: true do |f| %>
 
