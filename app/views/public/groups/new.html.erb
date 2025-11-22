@@ -3,6 +3,14 @@
     <div class="col-md-8">
       <div class="card shadow-lg border-0">
         <div class="card-body"> 
+          <% if @group.errors.any? %>
+            <%= @group.errors.count %>件のエラーが発生しました
+            <ul class="error-messages">
+              <% @group.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          <% end %>
           <%= form_with model: @group, url: groups_path, local: true do |f| %>
             <div class="form-group">
               <%= f.label :name, "グループ名", class: "font-weight-bold" %>
