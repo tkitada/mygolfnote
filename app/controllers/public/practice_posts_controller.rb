@@ -3,9 +3,8 @@ class Public::PracticePostsController < ApplicationController
   before_action :set_practice_post, only: [:edit, :update, :destroy]
 
   def index
-    @practice_posts = PracticePost.all
     @tag_list = Tag.all
-    @practice_posts = PracticePost.all.page(params[:id]).per(5)
+    @practice_posts = PracticePost.order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def new

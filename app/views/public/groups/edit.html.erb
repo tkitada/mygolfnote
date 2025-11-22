@@ -4,6 +4,14 @@
       <h4 class="px-3 mb-3 text-start d-inline-block">
         <%= "#{@group.name}" %>の編集
       </h4>
+      <% if @group.errors.any? %>
+        <%= @group.errors.count %>件のエラーが発生しました
+        <ul class="error-messages">
+          <% @group.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
       <%= form_with model:@group, local: true do |f| %>
         <div class="form-row mb-2">
           <div class="col-form-label col-md-2">

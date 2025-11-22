@@ -10,7 +10,15 @@ ja:
         name: 名前
         email: メールアドレス
         password: パスワード
-  #　問い合わせフォームのenum設定
+# Golf note
+      practice_post:
+        practice_date: 練習日
+        content: 練習メモ
+# group作成
+      group:
+        name: グループ名
+        introduction: 紹介文
+#　問い合わせフォームのenum設定
       contact:
         subject:
           bug_report: "不具合報告"
