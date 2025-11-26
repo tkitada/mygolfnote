@@ -18,9 +18,6 @@ ja:
       group:
         name: グループ名
         introduction: 紹介文
-# タグ作成
-      tag:
-        name: タグ名
 #　問い合わせフォームのenum設定
       contact:
         subject:
