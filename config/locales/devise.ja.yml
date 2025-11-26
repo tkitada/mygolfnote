@@ -2,6 +2,9 @@ ja:
   devise:
     failure:
       invalid: メールアドレスまたはパスワードが正しくありません。
+      unauthenticated: ログインしてください
+    admin:
+      unauthenticated: 管理者としてログインしてください
     sessions:
       signed_in: ログインに成功しました。
       signed_out: ログアウトしました。
