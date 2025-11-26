@@ -8,7 +8,7 @@ ja:
     registrations:
       user:
         signed_up: "アカウント登録が完了しました。"
-        signed_up: "アカウント登録が完了しました。"
+      signed_up: "アカウント登録が完了しました。"
   errors:
     messages:
       not_saved:
