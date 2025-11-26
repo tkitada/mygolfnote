@@ -3,6 +3,14 @@
     <div class="col-md-5">
       <div class="card shadow-lg border-0">
         <div class="card-header bg-success text-white">お問合せフォーム</div>
+        <% if @contact.errors.any? %>
+          <%= @contact.errors.count %>件のエラーが発生しました
+          <ul class="error-messages">
+            <% @contact.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
         <div class="card-body">
           <%= form_with model: @contact, url: contacts_path, local: true do |f| %>
             <div class="form-group">

@@ -53,6 +53,11 @@ class Public::GroupsController < ApplicationController
     group_users = @group.users
     @mail_title = params[:mail_title]
     @mail_content = params[:mail_content]
+
+    if @mail_title.blank? || @mail_content.blank?
+      flash[:alert] = "件名と内容を入力してください"
+      redirect_to group_new_mail_path(@group) and return
+    end
     EventMailer.send_mail(@group, @mail_title, @mail_content).deliver_now
 
     group_users.each do |user|
@@ -61,6 +66,8 @@ class Public::GroupsController < ApplicationController
         notifiable: @group,
       )
     end
+
+    flash[:notice] = "メールを送信しました"
   end
 
 
