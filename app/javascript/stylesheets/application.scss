@@ -18,7 +18,7 @@
 /*group page設定*/
 .group-visual {
   background-image: url('../images/golf_people.jpeg');
-  height: 250px !important;
+  height: 250px;
 }
 .main-visual-content {
   width: 50%;
@@ -27,12 +27,11 @@
   padding-top: 20px;
   padding-bottom: 20px;
 }
-.main-visual-title {
-  color: #fff;
-}
+.main-visual-title,
 .main-visual-text {
   color: #fff;
 }
+
 
 /*header設定*/
 header {
@@ -213,5 +212,27 @@ header {
   border: 1px solid #c82333;
   color: #721c24;
 }
+/*スマホ対策~576px*/
+@media (max-width: 576px) {
+  .main-visual {
+    height: 250px;
+  }
 
+  .group-visual {
+    height: 200px;
+  }
+
+  .main-visual-content {
+    width: 90%;         
+    padding: 15px;
+  }
+
+  .main-visual-title {
+    font-size: 1.4rem;  
+  }
+
+  .main-visual-text {
+    font-size: 0.9rem;
+  }
+}
 
