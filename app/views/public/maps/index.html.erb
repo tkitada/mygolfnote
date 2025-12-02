@@ -1,2 +1,6 @@
-<h1>Public::Maps#index</h1>
-<p>Find me in app/views/public/maps/index.html.erb</p>
+<div id="map" style="width: 100%; height: 600px;"></div>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= @maps_api_key %>&libraries=places&callback=initMap">
+</script>
+
+<%= javascript_pack_tag "maps", "data-turbolinks-track": "reload" %>
