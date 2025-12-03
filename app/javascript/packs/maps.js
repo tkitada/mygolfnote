@@ -1,4 +1,5 @@
 let map;
+let markers = [];
 
 window.initMap = function() {
   map = new google.maps.Map(document.getElementById("map"), {
@@ -6,40 +7,57 @@ window.initMap = function() {
     zoom: 13
   });
 
-  searchGolfFacilities(map.getCenter());
+  searchPlaces("ゴルフ練習場");
+
+  document.getElementById("searchBtn").addEventListener("click", () => {
+    const keyword = document.getElementById("keyword").value;
+    searchPlaces(keyword);
+  });
 
 };
 
-function searchGolfFacilities(location) {
-  const service = new google.maps.places.PlacesService(map);
+async function searchPlaces(keyword) {
+  clearMarkers();
 
-  service.nearbySearch(
-    {
-      location: location,
-      radius: 5000,
-      type: ["golf_course"],
-      keyword: "ゴルフ練習場",
-    },
-    (results, status) => {
-      if (status === google.maps.places.PlaceServiceStatus.OK) {
-        results.forEach((place) => createMarker(place));
-      }
-    }
-  );
-}
+  const { Place } = await google.maps.importLibrary("places");
+
+  const request = {
+    textQuery: keyword,
+    fields: ["displayName", "location"],
+    language: "ja"
+  };
+
+  const { places } = await Place.searchByText(request);
+
+  if (!places || places.length === 0) {
+    console.log("検索結果なし");
+    return;
+  }
+
+  places.forEach(place => {
+    createMarker(place);
+  });
+} 
 
 function createMarker(place) {
   const marker = new google.maps.Marker({
+    position: place.location,
     map,
-    position: place.geometry.location,
-    title: place.name
+    title: place.displayName
   });
 
-  const infoWindow = new google.maps.InfoWindow({
-    content: `<strong>${place.name}</strong><br>${place.vicinity || ""}`
+  markers.push(marker);
+
+  const info = new google.maps.InfoWindow({
+    content: `<strong>${place.displayName}</strong>`
   });
 
   marker.addListener("click", () => {
-    infoWindow.open(map, marker);
+    info.open(map, marker);
   });
+}
+
+function clearMarkers() {
+  markers.forEach(m => setMap(null));
+  markers = [];
 }

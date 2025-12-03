@@ -1,6 +1,13 @@
+<div style="margin-bottom: 10px;">
+  <input id="keyword" type="text" placeholder="例：ゴルフ練習場、ゴルフ場" style="width: 300px;">
+  <button id="searchBtn">検索</button>
+</div>
+
+<div id="map" style="height: 500px;"></div>
+
 <div id="map" style="width: 100%; height: 600px;"></div>
 
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= @maps_api_key %>&libraries=places&callback=initMap">
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= @maps_api_key %>&libraries=places&v=beta&callback=initMap">
 </script>
 
 <%= javascript_pack_tag "maps", "data-turbolinks-track": "reload" %>
