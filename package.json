@@ -12,6 +12,7 @@
     "bootstrap": "4.6.2",
     "dotenv": "^17.2.3",
     "jquery": "^3.7.1",
+    "jquery-jpostal-ja": "^2.14.75",
     "popper.js": "^1.16.1",
     "trix": "^1.2.0",
     "turbolinks": "^5.2.0",
