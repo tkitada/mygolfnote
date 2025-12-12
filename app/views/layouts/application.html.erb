@@ -21,7 +21,7 @@
           <p class="main-visual-text">あなたのゴルフ練習を記録・共有しよう</p>
           <% if user_signed_in? %>
             <div class="mt-3">
-              <%= link_to new_practice_post_path, class: "btn btn-success" do %>
+              <%= link_to new_practice_post_path, class: "btn btn-success", data: {turbolinks: "false"} do %>
                 <i class="fa-solid fa-golf-ball-tee"></i> Golf note
               <% end %>
             </div>

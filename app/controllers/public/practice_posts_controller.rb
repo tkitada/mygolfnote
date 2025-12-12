@@ -66,7 +66,7 @@ class Public::PracticePostsController < ApplicationController
 
 
   def practice_post_params
-    params.require(:practice_post).permit(:practice_date, :practice_focus, :shot_hits, :content)
+    params.require(:practice_post).permit(:practice_date, :practice_focus, :shot_hits, :content, :address)
   end
 
 
