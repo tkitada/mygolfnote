@@ -9,6 +9,9 @@ class PracticePost < ApplicationRecord
   has_rich_text :content
 
   validates :practice_date, :content, presence: :true
+  
+  geocoded_by :address #addressカラムの内容を緯度・経度に変換
+  after_validation :geocode #バリデーションの実行後にカラムに緯度・経度の値が入力される
 
   def favorited_by?(user)
     return false unless user
