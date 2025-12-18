@@ -5,6 +5,10 @@ class Public::PracticePostsController < ApplicationController
   def index
     @tag_list = Tag.all
     @practice_posts = PracticePost.order(created_at: :desc).page(params[:page]).per(5)
+    respond_to do |format|
+      format.html
+      format.json { render json: @practice_posts }
+    end
   end
 
   def new
