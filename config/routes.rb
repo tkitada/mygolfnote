@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     get "search", to: "searches#search", as: "search"
     get '/users/:id/confirm' => 'users#confirm', as: :user_confirm
     patch 'users/unsubscribe' => 'users#unsubscribe'
-    get "golf_places/search", to: "golf_places#search"
+    get "maps", to: "maps#index"
 
     resources :practice_posts, only: [:new, :create, :show, :edit, :index, :update, :destroy] do
       resource :favorites, only: [:create, :destroy]

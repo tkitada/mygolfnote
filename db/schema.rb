@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_11_17_064241) do
+ActiveRecord::Schema.define(version: 2025_12_03_135744) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -144,6 +144,9 @@ ActiveRecord::Schema.define(version: 2025_11_17_064241) do
     t.integer "practice_type"
     t.integer "shot_hits"
     t.integer "user_id"
+    t.string "address", default: "", null: false
+    t.float "latitude", default: 0.0, null: false
+    t.float "longitude", default: 0.0, null: false
   end
 
   create_table "tags", force: :cascade do |t|

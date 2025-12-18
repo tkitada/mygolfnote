@@ -26,6 +26,28 @@
 
         <div class="form-row mb-2">
           <div class="col-form-label col-md-2">
+            練習場郵便番号
+          </div>
+          <div class="col-md-5">
+            <p class="form-control-plaintext">
+              <%= text_field_tag :zipcode %>
+            </p>
+          </div>
+        </div>
+
+        <div class="form-row mb-2">
+          <div class="col-form-label col-md-2">
+            練習場住所
+          </div>
+          <div class="col-md-7">
+            <p class="form-control-plaintext">
+              <%= f.text_field :address %>
+            </p>
+          </div>
+        </div>
+
+        <div class="form-row mb-2">
+          <div class="col-form-label col-md-2">
             練習テーマ
           </div>
           <div class="col-md-5">

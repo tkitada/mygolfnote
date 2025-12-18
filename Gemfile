@@ -74,3 +74,5 @@ gem "rails-i18n"
 gem "devise-i18n-views"
 # enum
 gem "enum_help"
+# 位置情報などが扱える
+gem "geocoder"

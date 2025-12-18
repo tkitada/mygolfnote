@@ -1,0 +1,10 @@
+<div style="margin-bottom: 10px;">
+  <input id="keyword" type="text" placeholder="例：ゴルフ練習場、ゴルフ場" style="width: 300px;">
+  <button id="searchBtn">検索</button>
+</div>
+
+
+<div id="map" style="width: 100%; height: 600px;" data-api-key="<%= @maps_api_key %>"></div>
+
+
+<%= javascript_pack_tag "maps", "data-turbolinks-track": "reload" %>
