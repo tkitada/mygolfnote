@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update]
     resources :notifications, only: [:update]
     resources :contacts, only: [:new, :create, :show]
+    resources :scores, only: [:index, :new, :create]
     resources :groups, only: [:new, :index, :show, :create, :edit, :update] do
       resource :permits, only: [:create, :destroy]
       resource :group_users, only: [:create, :destroy]
