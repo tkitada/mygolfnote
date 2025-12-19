@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  score: one
+  hole_number: 1
+  par: 1
+  strokes: 1
+  putts: 1
+
+two:
+  score: two
+  hole_number: 1
+  par: 1
+  strokes: 1
+  putts: 1

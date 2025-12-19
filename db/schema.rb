@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_12_19_074339) do
+ActiveRecord::Schema.define(version: 2025_12_19_080419) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -94,6 +94,18 @@ ActiveRecord::Schema.define(version: 2025_12_19_074339) do
     t.integer "owner_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "hole_scores", force: :cascade do |t|
+    t.integer "score_id", null: false
+    t.integer "hole_number", null: false
+    t.integer "par"
+    t.integer "strokes"
+    t.integer "putts"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["score_id", "hole_number"], name: "index_hole_scores_on_score_id_and_hole_number", unique: true
+    t.index ["score_id"], name: "index_hole_scores_on_score_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -187,6 +199,7 @@ ActiveRecord::Schema.define(version: 2025_12_19_074339) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "group_users", "groups"
   add_foreign_key "group_users", "users"
+  add_foreign_key "hole_scores", "scores"
   add_foreign_key "notifications", "users"
   add_foreign_key "permits", "groups"
   add_foreign_key "permits", "users"
