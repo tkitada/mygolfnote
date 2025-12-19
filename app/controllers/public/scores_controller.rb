@@ -18,7 +18,7 @@ class Public::ScoresController < ApplicationController
   def create
     @score = current_user.scores.build(score_params)
     if @score.save
-      redirect_to scores_path
+      redirect_to scores_path(@score)
     else
       render :new
     end
@@ -28,6 +28,15 @@ class Public::ScoresController < ApplicationController
 
   def score_params
     params.require(:score).permit(
-      :date, :course_name
+      :date, 
+      :course_name,
+      #↓がないとHoleScoreは保存されない
+      hole_scores_attributes: [
+        :hole_number,
+        :par,
+        :strokes,
+        :putts
+      ]
     )
+  end
 end

@@ -1,0 +1,43 @@
+<h1>スコア入力</h1>
+
+<%= form_with model: @score, local: true do |f| %>
+
+  <!-- Score情報 -->
+  <div>
+    <%= f.label :date %>
+    <%= f.date_field :date %>
+  </div>
+
+  <div>
+    <%= f.label :course_name %>
+    <%= f.text_field :course_name %>
+  </div>
+
+  <!-- HoleScore 表 -->
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Hole</th>
+        <th>Par</th>
+        <th>打数</th>
+        <th>パット</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= f.fields_for :hole_scores do |hf| %>
+        <tr>
+          <td>
+            <%= hf.hidden_field :hole_number %>
+            <%= hf.object.hole_number %>
+          </td>
+          <td><%= hf.number_field :par %></td>
+          <td><%= hf.number_field :strokes %></td>
+          <td><%= hf.number_field :putts %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= f.submit "保存" %>
+<% end %>
