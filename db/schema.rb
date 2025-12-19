@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_12_03_135744) do
+ActiveRecord::Schema.define(version: 2025_12_19_074339) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -149,6 +149,15 @@ ActiveRecord::Schema.define(version: 2025_12_03_135744) do
     t.float "longitude", default: 0.0, null: false
   end
 
+  create_table "scores", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.date "date", null: false
+    t.string "course_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_scores_on_user_id"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -183,4 +192,5 @@ ActiveRecord::Schema.define(version: 2025_12_03_135744) do
   add_foreign_key "permits", "users"
   add_foreign_key "post_tags", "practice_posts"
   add_foreign_key "post_tags", "tags"
+  add_foreign_key "scores", "users"
 end

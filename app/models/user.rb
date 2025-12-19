@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :permits, dependent: :destroy
   has_many :groups, through: :group_users
   has_many :notifications, dependent: :destroy
+  has_many :scores, dependent: :destroy
   
   has_one_attached :profile_image
 
