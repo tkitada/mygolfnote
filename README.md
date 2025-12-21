@@ -35,7 +35,7 @@
 - OS：Linux(Ubuntu)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
-- JSライブラリ：jQuery, Trix, turbolinks, webpack
+- JSライブラリ：jQuery, Trix, webpack
 - IDE：Visual Studio Code（VSCode）
 ​
 ## 使用素材
